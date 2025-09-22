@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 
-Route::domain(env('MAIN_DOMAIN'))->group(function () {
+Route::domain(config('app.main_domain'))->group(function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/about', [HomeController::class, 'about']);
     Route::get('/reviews', [HomeController::class, 'reviews']);
@@ -17,7 +17,7 @@ Route::domain(env('MAIN_DOMAIN'))->group(function () {
     Route::post('/reviews', [HomeController::class, 'storeReview']);
 });
 
-Route::domain(env('BLOG_DOMAIN'))->group(function () {
+Route::domain(config('app.blog_domain'))->group(function () {
     Route::get('/', [BlogController::class, 'index']);
     Route::get('/main', function () {
         return redirect()->away('http://' . config('app.main_domain'));
