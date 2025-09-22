@@ -12,7 +12,7 @@ Route::domain(env('MAIN_DOMAIN'))->group(function () {
     Route::get('/reviews', [HomeController::class, 'reviews']);
     Route::get('/policy', [HomeController::class, 'policy']);
     Route::get('/blog', function () {
-        return redirect()->away('http://' . env('BLOG_DOMAIN'));
+        return redirect()->away('http://' . config('app.blog_domain'));
     });
     Route::post('/reviews', [HomeController::class, 'storeReview']);
 });
@@ -20,7 +20,7 @@ Route::domain(env('MAIN_DOMAIN'))->group(function () {
 Route::domain(env('BLOG_DOMAIN'))->group(function () {
     Route::get('/', [BlogController::class, 'index']);
     Route::get('/main', function () {
-        return redirect()->away('http://' . env('MAIN_DOMAIN'));
+        return redirect()->away('http://' . config('app.main_domain'));
     });
     Route::get('/posts/{post:link}', [BlogController::class, 'show'])->name('posts.show');
 });
