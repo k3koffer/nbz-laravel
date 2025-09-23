@@ -1,10 +1,5 @@
-import '../css/reset.css';
-
 import '../scss/app.scss';
 import './bootstrap';
-
-import '../css/app.css';
-
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import { createInertiaApp } from '@inertiajs/vue3';
