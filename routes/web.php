@@ -6,14 +6,14 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 
-Route::domain('blog.neboisyaznat.ru')->group(function () {
+Route::domain(config('app.blog_domain'))->group(function () {
     Route::get('/', [BlogController::class, 'index']);
     Route::get('/posts/{post:link}', [BlogController::class, 'show'])->name('posts.show');
 
     Route::redirect('/main', 'https://neboisyaznat.ru'); 
 });
 
-Route::domain('neboisyaznat.ru')->group(function () {
+Route::domain(config('app.main_domain'))->group(function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/about', [HomeController::class, 'about']);
     Route::get('/reviews', [HomeController::class, 'reviews']);

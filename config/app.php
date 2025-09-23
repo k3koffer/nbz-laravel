@@ -122,4 +122,7 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+    'main_domain' => env('MAIN_DOMAIN', 'neboisyaznat.test:8000'),
+    'blog_domain' => env('BLOG_DOMAIN', 'blog.neboisyaznat.test:8000'),
 ];
