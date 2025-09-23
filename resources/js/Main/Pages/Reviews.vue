@@ -49,6 +49,8 @@ const props = defineProps({
 
         a {
         transition: 0.2s ease-out;
+        text-decoration: none;
+        color: black;
 
         &:hover {
             color: #FF9F43;

@@ -132,6 +132,9 @@ let showResetButton = computed(() => {
         justify-self: center;
 
         .form-submit {
+            border: 0;
+            background-color: transparent;
+
             i {
                 transition: 0.2s ease-out;
                 color: #D3C8B3;
@@ -152,9 +155,11 @@ let showResetButton = computed(() => {
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
-                right: 40px;
+                right: 50px;
                 padding: 0 5px;
                 color: #D3C8B3;
+                background-color: transparent;
+                border: 0;
             }
 
             input {
@@ -166,6 +171,7 @@ let showResetButton = computed(() => {
                 font-family: 18px;
                 padding: 5px;
                 transition: 0.2s ease-in;
+                border-radius: 0;
     
                 &::placeholder {
                     font-family: 'Nunito', sans-serif;

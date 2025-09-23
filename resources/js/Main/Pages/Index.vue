@@ -125,9 +125,12 @@ const props = defineProps({
     .main {
         background-color: #FBEEC1;
         width: 100%;
-        min-height: 90vh;
+        min-height: 500px;
+        @include media-breakpoint-up(lg) {
+            min-height: 870px;
+        }
+        height: 85vh;
         display: flex;
-        height: fit-content;
 
         .main-container {
             width: 100%;
@@ -179,6 +182,7 @@ const props = defineProps({
                 width: 100%;
                 display: flex;
                 justify-content: center;
+                text-decoration: none;
                 button {
                     margin: 20px auto 0 auto;
                     padding: 10px 20px;
@@ -428,6 +432,7 @@ const props = defineProps({
 
                 a {
                     color: #FF9F43;
+                    text-decoration: none;
                 }
             }
     
@@ -498,6 +503,7 @@ const props = defineProps({
 
                     a {
                         color: #FF9F43;
+                        text-decoration: none;
                     }
                 }
             }

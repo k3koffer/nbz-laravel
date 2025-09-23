@@ -32,7 +32,7 @@ let currentUrl = computed(() => {
         <section class="index-body">
             <transition name="fade" mode="out-in"> 
                 <div class="article-list">
-                    <div class="blog-search-wrapper d-flex justify-center">
+                    <div class="blog-search-wrapper d-flex justify-content-center">
                         <blog-search />
                     </div>
                     <article-list :articles="posts" />

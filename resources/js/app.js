@@ -1,12 +1,8 @@
-
-// 2. Стили фреймворков (Bootstrap, Vueform и т.д.)
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-// 1. Сброс стилей (должен идти первым)
 import '../css/reset.css';
 
-// 3. Ваши собственные основные стили, которые могут переопределять фреймворки
-import '../scss/app.scss'; 
+import '../scss/app.scss';
+import './bootstrap';
+
 import '../css/app.css';
 
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';

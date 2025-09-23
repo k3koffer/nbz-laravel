@@ -58,10 +58,6 @@ let links = [
             
             transition: 0.2s ease-out;
             
-            &:hover {
-                color: #ada587;
-                transition: 0.2s ease-in;
-            }
             
             a {
                 font-size: clamp(14px, 2vw, 18px);
@@ -69,8 +65,15 @@ let links = [
                 font-weight: 800;
                 font-optical-sizing: auto;
                 font-style: normal;
+                text-decoration: none;
+                color: black;
                 
                 padding: 10px;
+
+                &:hover {
+                    color: #ada587;
+                    transition: 0.2s ease-in;
+                }
             }
         }
 
@@ -80,6 +83,7 @@ let links = [
                 justify-content: flex-end;
             }
             align-items: center;
+            margin: 0;
         }
     }
 </style>

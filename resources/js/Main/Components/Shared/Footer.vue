@@ -69,6 +69,7 @@ import { Link } from '@inertiajs/vue3';
 
             i {
                 transition: 0.2s;
+                color: black;
                 &:hover {
                     transform: scale(1.2);
                 }
@@ -94,6 +95,8 @@ import { Link } from '@inertiajs/vue3';
                 letter-spacing: 1px;
                 transition: 0.2s ease-out;
                 width: fit-content;
+                text-decoration: none;
+                color: black;
 
                 &:hover {
                     letter-spacing: 1.2px;
@@ -129,6 +132,8 @@ import { Link } from '@inertiajs/vue3';
                 }
                 padding: 0 10px;
                 transition: 0.2s ease-out;
+                text-decoration: none;
+                color: black;
 
                 &:hover {
                     letter-spacing: 1px;
@@ -142,6 +147,11 @@ import { Link } from '@inertiajs/vue3';
             margin: 0 auto;
             padding: 10px 10px;
             transition: 0.2s ease-out;
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
 
             &:hover {
                 letter-spacing: 1px;
