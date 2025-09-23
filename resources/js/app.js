@@ -1,14 +1,15 @@
+// 1. Сброс стилей (должен идти первым)
 import '../css/reset.css';
 
-import '../scss/app.scss'; // Импортируем наши SCSS стили
-import './bootstrap';
-
+// 2. Стили фреймворков (Bootstrap, Vueform и т.д.)
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@vueform/vueform/dist/bootstrap.css';
 
+// 3. Ваши собственные основные стили, которые могут переопределять фреймворки
+import '../scss/app.scss'; 
 import '../css/app.css';
 
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import '@vueform/vueform/dist/bootstrap.css';
 
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';

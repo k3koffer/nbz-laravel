@@ -10,7 +10,7 @@ Route::domain(config('app.blog_domain'))->group(function () {
     Route::get('/', [BlogController::class, 'index']);
     Route::get('/posts/{post:link}', [BlogController::class, 'show'])->name('posts.show');
 
-    Route::redirect('/main', 'https://neboisyaznat.ru'); 
+    Route::redirect('/main', 'http://' . config('app.main_domain')); 
 });
 
 Route::domain(config('app.main_domain'))->group(function () {
@@ -20,7 +20,7 @@ Route::domain(config('app.main_domain'))->group(function () {
     Route::get('/policy', [HomeController::class, 'policy']);
     Route::post('/reviews', [HomeController::class, 'storeReview']);
 
-    Route::redirect('/blog', 'https://blog.neboisyaznat.ru');
+    Route::redirect('/blog', 'http://' . config('app.blog_domain'));
 });
 
 // Route::domain('edu.nbzhub.org')->group(function () {
