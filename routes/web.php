@@ -6,18 +6,15 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 
-Route::domain(config('app.blog_domain'))->group(function () {
-    // ВРЕМЕННЫЙ ТЕСТ
-    Route::get('/', function () {
-        dd('Laravel видит хост:', request()->getHost());
+Route::domain(config('app.main_domain'))->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/about', [HomeController::class, 'about']);
+    Route::get('/reviews', [HomeController::class, 'reviews']);
+    Route::get('/policy', [HomeController::class, 'policy']);
+    Route::get('/blog', function () {
+        return redirect()->away('http://' . config('app.blog_domain'));
     });
-    
-    // Route::get('/', [BlogController::class, 'index']); // <-- ВРЕМЕННО ОТКЛЮЧЕНО
-    
-    Route::get('/main', function () {
-        return redirect()->away('http://' . config('app.main_domain'));
-    });
-    Route::get('/posts/{post:link}', [BlogController::class, 'show'])->name('posts.show');
+    Route::post('/reviews', [HomeController::class, 'storeReview']);
 });
 
 Route::domain(config('app.blog_domain'))->group(function () {
