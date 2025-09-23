@@ -16,7 +16,7 @@ class SetInertiaRootView
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->getHost() === env('BLOG_DOMAIN')) {
+        if ($request->getHost() === 'blog.neboisyaznat.ru') {
             // Если это домен блога, используем шаблон blog.blade.php
             Inertia::setRootView('blog');
         } else {
