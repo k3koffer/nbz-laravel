@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Head title="НБЗ | Политика конфиденциальности" />
+    <Head title="Политика конфиденциальности" />
     
     <AppLayout>
         <div class="index-body">

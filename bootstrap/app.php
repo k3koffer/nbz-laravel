@@ -42,17 +42,12 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $exceptions->renderable(function (Throwable $e, $request) {
             if ($request->header('X-Inertia')) {
-                $statusCode = method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500;
-
-                if ($statusCode === 500 && !config('app.debug')) {
-                    return Inertia::render('Error/Universal', ['status' => 500])
-                           ->toResponse($request)
-                           ->setStatusCode(500);
+                if (!config('app.debug')) {
+                    $statusCode = method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500;
+                    return Inertia::render('Error/Universal', ['status' => $statusCode])
+                        ->toResponse($request)
+                        ->setStatusCode($statusCode);
                 }
-                
-                return Inertia::render('Error/Universal', ['status' => $statusCode])
-                    ->toResponse($request)
-                    ->setStatusCode($statusCode);
             }
         });
     })->create();

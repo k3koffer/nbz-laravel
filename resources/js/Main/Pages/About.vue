@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <Head title="НБЗ | О нас" />
+    <Head title="О нас" />
     
     <AppLayout>
         <div class="index-body">

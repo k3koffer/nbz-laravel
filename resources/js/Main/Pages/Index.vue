@@ -1,6 +1,6 @@
 <script setup>
 import AppLayout from '@/Main/Layouts/AppLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import EducatorPreview from '@/Main/Components/Homepage/EducatorPreview.vue';
 // import { computed } from 'vue';
 
@@ -15,7 +15,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <Head title="НБЗ | Главная" />
+    <Head title="Главная" />
     
     <AppLayout>
         <div class="index-body">
@@ -41,7 +41,7 @@ const props = defineProps({
                             общение. Тут ученики смогут научиться отличать систолу от диастолы, Османскую империю от Римской и
                             C++ от JavaScript. Пс, у нас еще много кросс-научных курсов (это когда науки взаимодействуют друг с
                             другом), так что каждый найдет себе что-то по душе.</p>
-                        <button class="btn btn-dark">О нас</button>
+                        <Link href="/about"><button class="btn btn-dark">О нас</button></Link>
                     </div>
                     <div class="col-5 d-none d-lg-flex image-wrap">
                         <div class="image">

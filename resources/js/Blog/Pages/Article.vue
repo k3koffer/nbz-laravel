@@ -1,11 +1,13 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
-import { Link, Head, router } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/Blog/Layouts/AppLayout.vue';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css'; // импортируем стили для Tippy
 import { Modal } from 'bootstrap';
 import emitter from '@/eventBus.js';
+import { format } from 'date-fns';
+import { ru } from 'date-fns/locale';
 
 const props = defineProps({
   article: Object,
@@ -31,6 +33,17 @@ const articleType = computed(() => {
         default:
             return "СТАТЬЯ";
     }
+});
+
+// Вычисляемое свойство для отформатированной даты
+const formattedDate = computed(() => {
+  if (!props.article.created_at) {
+    return '';
+  }
+
+  return format(new Date(props.article.created_at), 'd MMMM yyyy', {
+    locale: ru,
+  });
 });
 
 let currentLocation = computed(() => {
@@ -140,9 +153,34 @@ let currentUrl = computed(() => {
 });
 
 let imagePath = computed(() => {
-    let imageName = JSON.parse(props.article.picture).name;
-    return 'https://ik.imagekit.io/3dwnck0ax/blog_overlays/' + imageName;
+    let picture = JSON.parse(props.article.picture);
+    if (picture && picture.path) {
+        return 'url(https://ik.imagekit.io/3dwnck0ax' + picture.path +')';
+    } else {
+        return 'unset';
+    }
 });
+
+const share = (socialNetwork) => {
+    const url = window.location.href;
+    let shareUrl = '';
+
+    switch (socialNetwork) {
+    case 'telegram':
+        shareUrl = `https://telegram.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(props.article.title)}`;
+        break;
+    case 'vk':
+        shareUrl = `https://vk.com/share.php?url=${encodeURIComponent(url)}`;
+        break;
+    case 'ok':
+        shareUrl = `https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl=${encodeURIComponent(url)}`;
+        break;
+    }
+
+    if (shareUrl) {
+    window.open(shareUrl, 'Share', 'width=650,height=500,status=0,toolbar=0');
+    }
+};
 
 </script>
 
@@ -182,17 +220,17 @@ let imagePath = computed(() => {
                             <h5>Поделиться</h5>
                             <div class="row mx-0">
                                 <div class="col">
-                                    <a href="#">
+                                    <a href="#" @click="share('vk')">
                                         <img class="logo" src="/images/vk_logo.png">
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a href="#">
+                                    <a href="#" @click="share('ok')">
                                         <img class="logo" src="/images/ok_logo.png">
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a href="#">
+                                    <a href="#" @click="share('telegram')">
                                         <img class="logo" src="/images/tg_logo.png">
                                     </a>
                                 </div>
@@ -213,7 +251,7 @@ let imagePath = computed(() => {
             <div class="article-body">
                 <div class="article-header d-inline-flex px-0">
                     <p class="article-type">{{ articleType }}</p>
-                    <p class="article-date ps-2">{{ article.created_at }}</p>
+                    <p class="article-date ps-2">{{ formattedDate }}</p>
                 </div>
                 <h1 id="title" ref="titleElement">{{ article.title }}<i class="fa-xs fa-solid fa-share share-icon"></i></h1>
                 <div v-html="article.content" class="article-content" ref="articleContent"></div>

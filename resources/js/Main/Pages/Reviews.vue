@@ -11,7 +11,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <Head title="НБЗ | Отзывы" />
+    <Head title="Отзывы" />
     
     <AppLayout>
         <div class="index-body">

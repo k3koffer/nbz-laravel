@@ -34,9 +34,16 @@ watch(() => page.props.flash.success, (newMessage) => {
 
 watch(() => page.props.flash.error, (newMessage) => {
   if (newMessage) {
-    showNotification(newMessage, 'error');
+    showNotification(newMessage, 'danger');
   }
 });
+
+watch(() => page.props.errors, (newErrors) => {
+  if (newErrors && Object.keys(newErrors).length > 0) {
+    const firstErrorMessage = Object.values(newErrors)[0];
+    showNotification(firstErrorMessage, 'danger');
+  }
+}, { deep: true });
 
 onMounted(() => {
   emitter.on('show-notification', (data) => {

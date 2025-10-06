@@ -14,7 +14,7 @@ class GetPostsAction
         $sortBy = $request->input('sortBy', 'new');
 
         return Post::query()
-            ->select(['id', 'title', 'description', 'link', 'picture', 'type', 'created_at', 'tags'])
+            ->select(['id', 'title', 'description', 'link', 'picture', 'type', 'content' ,'created_at', 'tags', 'creator_id'])
             ->when($request->input('search'), function ($query, $search) {
                 $query->where('title', 'like', "%{$search}%");
             })

@@ -59,7 +59,14 @@ return [
             'throw' => false,
             'report' => false,
         ],
-
+        'imagekit' => [
+            'driver' => 'imagekit',
+            'key' => env('IMAGEKIT_PUBLIC_KEY'),
+            'secret' => env('IMAGEKIT_PRIVATE_KEY'),
+            'endpoint_url' => env('IMAGEKIT_ENDPOINT_URL'),
+            'throw' => false,
+        ],
+        
     ],
 
     /*

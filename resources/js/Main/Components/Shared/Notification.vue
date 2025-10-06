@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onUnmounted } from 'vue';
+import { ref, watch, onUnmounted, computed  } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 
 const page = usePage();
@@ -41,6 +41,13 @@ onUnmounted(() => {
   clearTimeout(notificationTimer);
 });
 
+const notificationClassType = computed(() => {
+  console.log(notificationType.value);
+  if (notificationType.value === 'success') {
+    return 'success';
+  }
+  return 'danger'; // Во всех остальных случаях возвращаем 'danger'
+});
 </script>
 
 <template>
@@ -48,7 +55,7 @@ onUnmounted(() => {
         <div 
             v-if="notificationMessage" 
             :key="notificationType" 
-            :class="['notification', `is-${notificationType}`]"
+            :class="['notification', `is-${notificationClassType}`]"
         >
             <i :class="['icon', notificationType === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle']"></i>
             

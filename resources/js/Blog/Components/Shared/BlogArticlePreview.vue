@@ -41,8 +41,12 @@ let articleType = computed(() => {
 });
 
 let articlePicture = computed(() => {
-    let pictureName = JSON.parse(props.article.picture).name;
-    return 'url(https://ik.imagekit.io/3dwnck0ax/blog_overlays/' + pictureName +')';
+    let picture = JSON.parse(props.article.picture);
+    if (picture && picture.path) {
+        return 'url(https://ik.imagekit.io/3dwnck0ax' + picture.path +')';
+    } else {
+        return 'unset';
+    }
 });
 
 let articleLink = computed(() => {

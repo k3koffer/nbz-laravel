@@ -4,8 +4,75 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa8e2bbf58f6f825c9d4705b963f0c85",
+    "content-hash": "148e3aa06832f0a928df3d66e373bb9d",
     "packages": [
+        {
+            "name": "beberlei/assert",
+            "version": "v3.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beberlei/assert.git",
+                "reference": "b5fd8eacd8915a1b627b8bfc027803f1939734dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/b5fd8eacd8915a1b627b8bfc027803f1939734dd",
+                "reference": "b5fd8eacd8915a1b627b8bfc027803f1939734dd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "*",
+                "phpstan/phpstan": "*",
+                "phpunit/phpunit": ">=6.0.0",
+                "yoast/phpunit-polyfills": "^0.1.0"
+            },
+            "suggest": {
+                "ext-intl": "Needed to allow Assertion::count(), Assertion::isCountable(), Assertion::minCount(), and Assertion::maxCount() to operate on ResourceBundles"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/Assert/functions.php"
+                ],
+                "psr-4": {
+                    "Assert\\": "lib/Assert"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Richard Quadling",
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
+                }
+            ],
+            "description": "Thin assertion library for input validation in business models.",
+            "keywords": [
+                "assert",
+                "assertion",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/beberlei/assert/issues",
+                "source": "https://github.com/beberlei/assert/tree/v3.3.3"
+            },
+            "time": "2024-07-15T13:18:35+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.14.0",
@@ -1054,6 +1121,60 @@
             "time": "2025-08-22T14:27:06+00:00"
         },
         {
+            "name": "imagekit/imagekit",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/imagekit-developer/imagekit-php.git",
+                "reference": "a03aaf05df00786fddea82ac30249492125064c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/imagekit-developer/imagekit-php/zipball/a03aaf05df00786fddea82ac30249492125064c6",
+                "reference": "a03aaf05df00786fddea82ac30249492125064c6",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "^3.3",
+                "ext-curl": "*",
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "~6.0 || ~7.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ImageKit\\": "src/ImageKit/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Imagekit",
+                    "homepage": "https://github.com/imagekit-developer/imagekit-php/graphs/contributors"
+                }
+            ],
+            "description": "PHP library for Imagekit",
+            "homepage": "https://github.com/imagekit-developer/imagekit-php",
+            "keywords": [
+                "image management",
+                "imagekit",
+                "library"
+            ],
+            "support": {
+                "email": "support@imagekit.io",
+                "issues": "https://github.com/imagekit-developer/imagekit-php/issues",
+                "source": "https://github.com/imagekit-developer/imagekit-php/tree/3.0.3"
+            },
+            "time": "2023-07-21T11:45:54+00:00"
+        },
+        {
             "name": "inertiajs/inertia-laravel",
             "version": "v2.0.6",
             "source": {
@@ -1122,6 +1243,50 @@
                 "source": "https://github.com/inertiajs/inertia-laravel/tree/v2.0.6"
             },
             "time": "2025-08-26T06:17:48+00:00"
+        },
+        {
+            "name": "junaidiar/imagekit-adapter",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/junaidiar19/php-imagekit-adapter.git",
+                "reference": "e23416284e9c1e12699ef39dd11895f6a8a9371c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/junaidiar19/php-imagekit-adapter/zipball/e23416284e9c1e12699ef39dd11895f6a8a9371c",
+                "reference": "e23416284e9c1e12699ef39dd11895f6a8a9371c",
+                "shasum": ""
+            },
+            "require": {
+                "imagekit/imagekit": "^3.0",
+                "league/flysystem": "^3.15",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^10.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JunaidiAR\\ImageKitAdapter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Junaidi Abdul Rahman",
+                    "email": "junaidiar.fcb@gmail.com",
+                    "homepage": "https://junaidi-abdul-rahman.netlify.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "File System adapter for ImageKit.",
+            "support": {
+                "issues": "https://github.com/junaidiar19/php-imagekit-adapter/issues",
+                "source": "https://github.com/junaidiar19/php-imagekit-adapter/tree/1.0.0"
+            },
+            "time": "2023-08-02T06:58:57+00:00"
         },
         {
             "name": "laravel/framework",
