@@ -4,9 +4,12 @@ import ArticlePreview from '@/Blog/Components/Admin/ArticlePreview.vue';
 import { ref, onMounted, computed } from 'vue';
 import { useForm, Head } from '@inertiajs/vue3';
 import { Modal } from 'bootstrap';
-import { MdEditor } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import { ARTICLE_TYPES } from '@/constants.js';
+
+const MdEditor = defineAsyncComponent(() => 
+    import('md-editor-v3').then(mod => mod.MdEditor)
+);
 
 let props = defineProps({
     posts: Object,
@@ -15,9 +18,6 @@ let props = defineProps({
 
 let postModalElement = ref(null);
 let postModal = ref(null);
-
-// Изменение статьи
-// Передача данных в форму ✔ --> Изменение ✔ --> Отправка ✔ --> бэкенд / обработка картинки
 
 // теги в форме
 

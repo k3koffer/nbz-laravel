@@ -46,7 +46,7 @@ export default defineConfig({
             }
         }
     },
-    // optimizeDeps: {
-    //     include: ['wnumb'],
-    // },
+    build: {
+        chunkSizeWarningLimit: 1500,
+    }
 });
