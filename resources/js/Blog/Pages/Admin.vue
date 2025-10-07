@@ -1,7 +1,7 @@
 <script setup>
 import AppLayout from '@/Blog/Layouts/AppLayout.vue';
 import ArticlePreview from '@/Blog/Components/Admin/ArticlePreview.vue';
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, defineAsyncComponent } from 'vue';
 import { useForm, Head } from '@inertiajs/vue3';
 import { Modal } from 'bootstrap';
 import 'md-editor-v3/lib/style.css';
