@@ -9,7 +9,7 @@
     })
 
     let imageLink = computed(() => {
-        let imageURL = `https://ik.imagekit.io/3dwnck0ax/tr:w-1024,h-1024/${props.educator.picture}`;
+        let imageURL = `https://ik.imagekit.io/3dwnck0ax/tr:w-512,h-512/${props.educator.picture}`;
         return {
             backgroundImage: `url(${imageURL})`
         }

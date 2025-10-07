@@ -6,12 +6,20 @@ import { Link } from '@inertiajs/vue3';
     <footer>
         <div class="footer-top row mx-0">
             <div class="col-12 col-lg-4">
-                <Link href="/"><div class="logo"></div></Link>
+                <Link href="/">
+                    <img 
+                        class="logo-img" 
+                        src="https://ik.imagekit.io/3dwnck0ax/new_logo_transparent.png?updatedAt=1757353835347" 
+                        alt="Логотип Не бойся знать"
+                    >
+                </Link>
                 <div class="links">
                     <Link href="https://www.youtube.com/@НеБойсяЗнать" class="px-2 py-2">
+                        <span class="sr-only">Наш канал в YouTube</span>
                         <i class="fa-brands fa-youtube fa-xl"></i>
                     </Link>
                     <Link href="https://t.me/nebojsaznat" class="px-2 py-2">
+                        <span class="sr-only">Наш канал в Telegram</span>
                         <i class="fa-brands fa-telegram fa-xl"></i>
                     </Link>
                 </div>
@@ -49,14 +57,11 @@ import { Link } from '@inertiajs/vue3';
         flex: 1;
         display: flex;
         
-        .logo {
-            margin: 30px 20px 10px 20px;
-            padding: 10px;
+        .logo-img {
+            display: block;
             height: 60px;
-            background-image: url(https://ik.imagekit.io/3dwnck0ax/new_logo_transparent.png?updatedAt=1757353835347);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
+            width: auto;
+            margin: 30px auto 10px auto;
         }
 
         .links {
@@ -158,5 +163,17 @@ import { Link } from '@inertiajs/vue3';
                 color: #ada587;
             }
         }
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
     }
 </style>

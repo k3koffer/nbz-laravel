@@ -2,7 +2,7 @@
 import AppLayout from '@/Main/Layouts/AppLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import EducatorPreview from '@/Main/Components/Homepage/EducatorPreview.vue';
-// import { computed } from 'vue';
+import { computed } from 'vue';
 
 // --- PROPS ---
 // defineProps используется для объявления данных (пропсов),
@@ -12,20 +12,71 @@ const props = defineProps({
     educators: Array,
 });
 
+let currentUrl = computed(() => {
+    return window.location.href;
+});
+
 </script>
 
 <template>
-    <Head title="Главная" />
+    <Head title="Главная">
+        <meta name="description" content="Наши молодые и энергичные преподаватели говорят с ребятами на одном языке, так что забудьте о зубрежке и непонимании — мы предлагаем интерактивные уроки, интересные задания и живое общение. Не Бойся Знать — это ваш путь к знаниям без страха и скуки!" />
+        <meta property="og:title" content="НеБойсяЗнать - Главная" />
+        <meta property="og:description" content="Наши молодые и энергичные преподаватели говорят с ребятами на одном языке, так что забудьте о зубрежке и непонимании — мы предлагаем интерактивные уроки, интересные задания и живое общение. Не Бойся Знать — это ваш путь к знаниям без страха и скуки!" />
+        <meta property="og:url" :content="currentUrl" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="НеБойсяЗнать - образовательная платформа" />
+        <meta property="og:locale" content="ru_RU" />
+    </Head>
     
     <AppLayout>
         <div class="index-body">
             <section class="main">
                 <div class="main-container">
-                    <div class="logo"><img src="https://ik.imagekit.io/3dwnck0ax/new_logo_transparent.png?updatedAt=1757353835347"></div>
-                    <h1>Развивающие курсы и помощь в выборе профессии для детей</h1>
-                    <a class="to-courses-button-wrap" href="#section-courses"><button>К курсам</button></a>
-                    <div class="scroll-button">
-                        <a href="#section-courses"><span></span></a>
+                    <picture class="main-background-image-wrapper">
+                        <source 
+                            media="(min-width: 768px)"
+                            srcset="
+                                https://ik.imagekit.io/3dwnck0ax/tr:w-1280,f-auto/background_wide.png 1280w,
+                                https://ik.imagekit.io/3dwnck0ax/tr:w-1920,f-auto/background_wide.png 1920w,
+                                https://ik.imagekit.io/3dwnck0ax/tr:w-2560,f-auto/background_wide.png 2560w
+                            "
+                        >
+
+                        <img 
+                            src="https://ik.imagekit.io/3dwnck0ax/tr:w-750,f-auto/background_tel.png?updatedAt=1757355482559"
+                            srcset="
+                                https://ik.imagekit.io/3dwnck0ax/tr:w-480,f-auto/background_tel.png?updatedAt=1757355482559 480w,
+                                https://ik.imagekit.io/3dwnck0ax/tr:w-750,f-auto/background_tel.png?updatedAt=1757355482559 750w
+                            "
+                            alt="Фоновое изображение с учениками на развивающих курсах"
+                            
+                            fetchpriority="high"
+                            loading="eager"
+                            decoding="async"
+                            
+                            class="main-background-image"
+                            width="1920" height="1080"
+                        >
+                    </picture>
+
+                    <div class="main-content-overlay">
+                        <div class="logo">
+                            <img 
+                                srcset="
+                                    https://ik.imagekit.io/3dwnck0ax/tr:w-640,f-auto/new_logo_transparent.png?updatedAt=1757353835347 640w
+                                "
+                                sizes="(max-width: 768px) 640px, 120px"
+                                src="https://ik.imagekit.io/3dwnck0ax/tr:w-640,f-auto/new_logo_transparent.png?updatedAt=1757353835347"
+                                alt="Логотип Не Бойся Знать"
+                                width="640" height="120"
+                            >
+                        </div>
+                        <h1>Развивающие курсы и помощь в выборе профессии для детей</h1>
+                        <a class="to-courses-button-wrap" href="#section-courses"><button>К курсам</button></a>
+                        <div class="scroll-button">
+                            <a href="#section-courses"><span></span></a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -46,7 +97,8 @@ const props = defineProps({
                     <div class="col-5 d-none d-lg-flex image-wrap">
                         <div class="image">
                             <div class="overlay"></div>
-                            <video autoplay muted loop>
+                            <video autoplay muted loop playsinline poster="/images/index.webp">
+                                <source src="/images/index.webm" type="video/webm">
                                 <source src="/images/index.mp4" type="video/mp4">
                             </video>
                         </div>
@@ -123,126 +175,140 @@ const props = defineProps({
     }
 
     .main {
-        background-color: #FBEEC1;
+        background-color: #FBEEC1; // Оставляем как цвет-заглушку, который виден до загрузки фото
         width: 100%;
         min-height: 500px;
         @include media-breakpoint-up(lg) {
             min-height: 870px;
         }
         height: 85vh;
-        display: flex;
+        display: flex; // Это можно оставить, это не мешает
+    }
 
-        .main-container {
-            width: 100%;
-            background-image: url('https://ik.imagekit.io/3dwnck0ax/background_tel.png?updatedAt=1757355482559');
-            @include media-breakpoint-up(md) {
-                background-image: url('https://ik.imagekit.io/3dwnck0ax/background_wide.png');
+    // Контейнер теперь в основном отвечает за позиционирование
+    .main-container {
+        width: 100%;
+        position: relative; // Ключевое свойство для позиционирования фона и контента
+    }
+
+    // НОВЫЙ КЛАСС: Стили для нашего фонового изображения
+    .main-background-image-wrapper .main-background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+    }
+
+    // НОВЫЙ КЛАСС: Сюда переезжают все стили для расположения контента
+    .main-content-overlay {
+        position: relative;
+        z-index: 2; // Контент поверх фона
+        width: 100%;
+        height: 100%; // Растягиваем на всю высоту родителя
+        
+        // Стили, которые ПЕРЕЕХАЛИ из старого .main-container
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        // Все дочерние элементы теперь вложены сюда
+        .logo {
+            text-align: center;
+
+            img {
+                margin: auto;
+                max-height: 120px;
+                max-width: 100%;
+                object-fit: contain;
             }
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            padding: 20px;
+        }
+        
+        h1 {
+            width: 100%;
+            @include media-breakpoint-up(md) {
+                width: 70%;
+            }
+            @include media-breakpoint-up(lg) {
+                width: 50%;
+            }
+            margin: 0 auto;
+            font-family: "Nunito", sans-serif;
+            font-weight: 800;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-size: clamp(24px, 5vw, 48px);
+            text-align: center;
+            color: #343A40;
+            overflow-wrap: break-word;
+        }
+        
+        .to-courses-button-wrap {
+            width: 100%;
             display: flex;
             justify-content: center;
-            flex-direction: column;
-            position: relative;
-            
-            .logo {
-                text-align: center;
-    
-                img {
-                    margin: auto;
-                    max-height: 120px;
-                    max-width: 100%;
-                    object-fit: contain;
-                }
-            }
-            
-            h1 {
-                width: 100%;
-                @include media-breakpoint-up(md) {
-                    width: 70%;
-                }
-                @include media-breakpoint-up(lg) {
-                    width: 50%;
-                }
-                margin: 0 auto;
+            text-decoration: none;
+            button {
+                margin: 20px auto 0 auto;
+                padding: 10px 20px;
                 font-family: "Nunito", sans-serif;
                 font-weight: 800;
                 font-optical-sizing: auto;
                 font-style: normal;
-                font-size: clamp(24px, 5vw, 48px);
-                text-align: center;
-                color: #343A40;
-                overflow-wrap: break-word;
-                // hyphens: auto;
-            }
-            
-            .to-courses-button-wrap{
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                text-decoration: none;
-                button {
-                    margin: 20px auto 0 auto;
-                    padding: 10px 20px;
-                    font-family: "Nunito", sans-serif;
-                    font-weight: 800;
-                    font-optical-sizing: auto;
-                    font-style: normal;
-                    font-size: clamp(14px, 2vw, 18px);
-                    color: white;
-                    background-color: #ADA587;
-                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    transition: background-color 0.3s ease;
-                    
-                    &:hover {
-                        background-color: #8c8770;
-                    }
-                }
-            }
-    
-            .scroll-button {
-                position: absolute;
-                bottom: 60px;
-                left: 0;
-                right: 0;
-                margin: 10px auto;
-                width: fit-content;
-                a {
-                    padding-top: 60px;
-                }
-    
-                a span {
-                    position: absolute;
-                    top: 0;
-                    left: 50%;
-                    width: 30px;
-                    height: 50px;
-                    margin-left: -15px;
-                    border: 2px solid #8c8770;
-                    border-radius: 50px;
-                    box-sizing: border-box;
-                }
-    
-                a span::before {
-                    position: absolute;
-                    top: 10px;
-                    left: 50%;
-                    content: '';
-                    width: 6px;
-                    height: 6px;
-                    margin-left: -3px;
+                font-size: clamp(14px, 2vw, 18px);
+                color: white;
+                background-color: #ADA587;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                
+                &:hover {
                     background-color: #8c8770;
-                    border-radius: 100%;
-                    -webkit-animation: sdb10 2s infinite;
-                    animation: sdb10 2s infinite;
-                    box-sizing: border-box;
                 }
-    
+            }
+        }
+
+        .scroll-button {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            right: 0;
+            margin: 10px auto;
+            width: fit-content;
+            a {
+                padding-top: 60px;
+            }
+
+            a span {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                width: 30px;
+                height: 50px;
+                margin-left: -15px;
+                border: 2px solid #8c8770;
+                border-radius: 50px;
+                box-sizing: border-box;
+            }
+
+            a span::before {
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                content: '';
+                width: 6px;
+                height: 6px;
+                margin-left: -3px;
+                background-color: #8c8770;
+                border-radius: 100%;
+                -webkit-animation: sdb10 2s infinite;
+                animation: sdb10 2s infinite;
+                box-sizing: border-box;
             }
         }
     }

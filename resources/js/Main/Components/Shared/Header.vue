@@ -14,7 +14,7 @@ let links = [
     <header class="row mx-0">
         <div class="mx-0 px-0 col-12 col-lg-4">
             <Link href='/'>
-                <div class="logo"><img src="https://ik.imagekit.io/3dwnck0ax/new_logo_transparent.png?updatedAt=1757220300312"></div>
+                <div class="logo"><img alt="Логотип НеБойсяЗнать" src="https://ik.imagekit.io/3dwnck0ax/new_logo_transparent.png?updatedAt=1757220300312"></div>
             </Link>
         </div>
         <nav class="mx-0 px-0 py-3 col-12 col-lg-8 d-flex nav-menu">

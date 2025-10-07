@@ -11,8 +11,14 @@
         <link rel="manifest" href="/site.webmanifest">
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <script src="https://kit.fontawesome.com/19116f7e3a.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <script defer src="https://kit.fontawesome.com/19116f7e3a.js" crossorigin="anonymous"></script>
+
+        <noscript>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap">
+        </noscript>
 
         <!-- Scripts -->
         @routes
