@@ -14,7 +14,8 @@ class BlogController extends Controller
     protected $allowedIps = [
         '127.0.0.1',
         '192.250.230.83',
-        '83.215.234.49'
+        '83.215.234.49',
+        '31.135.33.119'
     ];
 
         public function index(Request $request, GetPostsAction $getPostsAction)
