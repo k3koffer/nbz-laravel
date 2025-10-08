@@ -39,7 +39,7 @@ function applySort(sortType) {
     <header style="transition: 0.2s; transition-timing-function: ease-in;" class="row mx-0 top-0">
         <div class="col-12 col-xl-6 col-xxl-6 d-flex justify-content-start px-0 py-0">
             <Link class="d-flex text-decoration-none mx-auto mx-xl-5" href="/">
-                <div class="logo"><img src="https://ik.imagekit.io/3dwnck0ax/logo_blog_transparent.png?updatedAt=1758560102058"></div>
+                <div class="logo"><img alt="Логотип НеБойсяЗнать | Блог" src="https://ik.imagekit.io/3dwnck0ax/logo_blog_transparent.png?updatedAt=1758560102058"></div>
             </Link>
         </div>
         <nav class="func col-12 col-xl-6 col-xxl-6 d-flex">

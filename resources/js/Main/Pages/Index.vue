@@ -2,7 +2,7 @@
 import AppLayout from '@/Main/Layouts/AppLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import EducatorPreview from '@/Main/Components/Homepage/EducatorPreview.vue';
-import { computed } from 'vue';
+import { computed, ref, onMounted, onUnmounted } from 'vue';
 
 // --- PROPS ---
 // defineProps используется для объявления данных (пропсов),
@@ -14,6 +14,41 @@ const props = defineProps({
 
 let currentUrl = computed(() => {
     return window.location.href;
+});
+
+let aboutVideo = ref(null);
+
+let observer = null;
+
+onMounted(() => {
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const video = entry.target;
+        video.play().catch(error => {
+          console.error("Autoplay was prevented:", error);
+        });
+
+        observer.unobserve(video);
+      }
+    });
+  }, options);
+
+  if (videoElement.value) {
+    observer.observe(videoElement.value);
+  }
+});
+
+onUnmounted(() => {
+  if (observer && videoElement.value) {
+    observer.unobserve(videoElement.value);
+  }
 });
 
 </script>
@@ -97,9 +132,9 @@ let currentUrl = computed(() => {
                     <div class="col-5 d-none d-lg-flex image-wrap">
                         <div class="image">
                             <div class="overlay"></div>
-                            <video autoplay muted loop playsinline poster="/images/index.webp">
+                            <video ref="aboutVideo" preload="none" autoplay muted loop playsinline poster="/images/index.webp">
                                 <source src="/images/index.webm" type="video/webm">
-                                <source src="/images/index.mp4" type="video/mp4">
+                                <!-- <source src="/images/index.mp4" type="video/mp4"> -->
                             </video>
                         </div>
                     </div>
