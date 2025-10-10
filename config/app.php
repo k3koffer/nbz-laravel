@@ -125,4 +125,6 @@ return [
 
     'main_domain' => env('MAIN_DOMAIN', 'neboisyaznat.test:8000'),
     'blog_domain' => env('BLOG_DOMAIN', 'blog.neboisyaznat.test:8000'),
+
+    'accept_reviews' => env('ACCEPT_REVIEWS', 'false'),
 ];

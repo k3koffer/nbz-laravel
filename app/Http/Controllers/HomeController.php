@@ -44,7 +44,8 @@ class HomeController extends Controller
 
         return Inertia::render('Reviews', [
             'reviews' => $reviews,
-            'show_header' => false
+            'show_header' => false,
+            'accept_reviews' => config('app.accept_reviews'),
         ]);
     }
 
@@ -60,7 +61,7 @@ class HomeController extends Controller
             'comment' => $validated['comment'],
             'rating' => $validated['rating'],
             'course' => $validated['course'],
-            'user_id' => $request->user()->id
+            // 'user_id' => $request->user()->id
         ]);
 
         // сделать проверку на наличие уже отзыва у юзера на этот курс

@@ -26,7 +26,7 @@ Route::domain(config('app.main_domain'))->group(function () {
 });
 
 Route::prefix('admin')->middleware(['web'])->group(function () {
-    Route::post('posts/{post}', [AdminPostController::class, 'update'])->name('posts.update');
+    Route::put('posts/{post}', [AdminPostController::class, 'update'])->name('posts.update');
     Route::resource('posts', AdminPostController::class)->only(['destroy', 'store']);
 });
 

@@ -2,7 +2,7 @@
 import AppLayout from '@/Blog/Layouts/AppLayout.vue';
 import ArticlePreview from '@/Blog/Components/Admin/ArticlePreview.vue';
 import { ref, onMounted, computed, defineAsyncComponent } from 'vue';
-import { useForm, Head } from '@inertiajs/vue3';
+import { router, useForm, Head } from '@inertiajs/vue3';
 import { Modal } from 'bootstrap';
 import 'md-editor-v3/lib/style.css';
 import { ARTICLE_TYPES } from '@/constants.js';
@@ -36,9 +36,18 @@ let form = useForm({
 
 const submit = () => {
     if (form.id) {
-        form._method = 'PUT';
-        form.post(route('posts.update', form.id), {
-             onSuccess: () => closeModal(),
+        router.post(route('posts.update', form.id), {
+            _method: 'put',
+            title: form.title,
+            description: form.description,
+            picture: form.picture,
+            type: form.type,
+            creator_id: form.creator_id,
+            content: form.content,
+            tags: form.tags,
+        }, {
+            onSuccess: () => closeModal(),
+            forceFormData: true,
         });
     } else {
         form.post(route('posts.store'), {

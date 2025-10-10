@@ -19,7 +19,7 @@ let links = [
         </div>
         <nav class="mx-0 px-0 py-3 col-12 col-lg-8 d-flex nav-menu">
             <ul class="mx-0 px-0 row w-100">
-                <li class="col" v-for="link in links" :key="link.href">
+                <li class="col px-0" v-for="link in links" :key="link.href">
                     <Link :href="link.href">{{ link.name }}</Link>
                 </li>
                 <li class="col">

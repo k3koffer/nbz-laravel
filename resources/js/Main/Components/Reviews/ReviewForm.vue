@@ -4,7 +4,15 @@ import { useForm } from '@inertiajs/vue3';
 import StarRating from '@/Main/Components/Reviews/StarRating.vue';
 import Notification from '@/Main/Components/Reviews/Notification.vue';
 
-let submitted = ref(false);
+let props = defineProps({
+    accept_reviews: Boolean,
+});
+
+let formDisabled = ref(false);
+if (props.accept_reviews === false) {
+    formDisabled.value = true;
+}
+
 let error = ref(false);
 let errorMessage = ref('');
 const form = useForm({
@@ -71,24 +79,35 @@ const submit = () => {
 <template>
     <form @submit.prevent="submit">
         <span>Оставить отзыв:</span>
-        <star-rating v-model="form.rating" />
+        <div class="rating-wrapper" :class="{ 'disable-interaction': !accept_reviews }">
+            <star-rating v-model="form.rating" />
+        </div>
         <div class="input-group select-wrapper mt-2 mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Курс</label>
-            <select class="form-select" id="inputGroupSelect01" v-model="form.course" required :disabled="submitted">
+            <select class="form-select" id="inputGroupSelect01" v-model="form.course" required :disabled="formDisabled">
                 <option disabled :value="null">Выберите...</option>
                 <option v-for="course in userCourses" :key="course.id" :value="course.title">{{ course.title }}</option>
             </select>
         </div>
         <div class="mb-3">
-            <textarea v-model="form.comment" class="form-control review-textarea" rows="3" :placeholder="commentPlaceholder" required :disabled="submitted"></textarea>
+            <textarea v-model="form.comment" class="form-control review-textarea" rows="3" :placeholder="commentPlaceholder" required :disabled="formDisabled"></textarea>
             <small class="textarea-counter" :class="{'counter-limit': commentLengthCounter > 1000}">{{ commentLengthCounter }} / 1000</small>
         </div>
-        <div class="send-form-button-wrap" href="#section-courses"><button type="submit" :disabled="submitted">Отправить отзыв</button></div>
+        <div class="send-form-button-wrap" href="#section-courses"><button type="submit" :disabled="formDisabled">Отправить отзыв</button></div>
         <Notification v-show="error" :message="errorMessage" />
     </form>
 </template>
 
 <style lang="scss" scoped>
+    .rating-wrapper {
+        display: inline-block;
+    }
+
+    .disable-interaction {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+
     span {
         font-family: 'Inter';
         font-weight: 400;

@@ -540,7 +540,7 @@ onUnmounted(() => {
             h2 {
                 font-family: 'Nunito', sans-serif;
                 font-weight: 800;
-                font-size: 64px;
+                font-size: clamp(36px, 4vw,64px);
                 letter-spacing: -0.02em;
                 color: #F8F6F0;
                 width: 100%;
@@ -565,7 +565,7 @@ onUnmounted(() => {
             h2 {
                 font-family: 'Nunito', sans-serif;
                 font-weight: 800;
-                font-size: 64px;
+                font-size: clamp(36px, 4vw,64px);
                 letter-spacing: -0.02em;
                 color: #23252C;
                 text-align: center;

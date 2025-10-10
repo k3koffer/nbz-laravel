@@ -6,6 +6,7 @@ import { Head, Link } from '@inertiajs/vue3';
 
 const props = defineProps({
     reviews: Array,
+    accept_reviews: Boolean,
 });
 
 </script>
@@ -31,7 +32,7 @@ const props = defineProps({
                     <p>Оставить отзыв легко — просто заполните форму ниже. Спасибо, что помогаете нам расти!</p>
                 </section>
                 <section class="form-wrapper">
-                    <review-form />
+                    <review-form :accept_reviews="accept_reviews" />
                 </section>
                 <section class="reviews-list">
                     <review v-for="review in reviews" :key="review" :review="review" />
@@ -42,6 +43,10 @@ const props = defineProps({
 </template>
 
 <style lang="scss" scoped>
+    .index-body {
+        background-color: #FBEEC1;
+    }
+
     .go-back {
         padding: 20px;
         font-family: 'Nunito', sans-serif;

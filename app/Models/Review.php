@@ -10,6 +10,14 @@ class Review extends Model
 {
     use HasFactory;
     //
+        protected $fillable = [
+        'comment',
+        'rating',
+        'course',
+        // 'user_id'
+    ];
+
+
         protected function createdAtFormatted(): Attribute
     {
         return Attribute::make(
