@@ -11,34 +11,37 @@ class HomeController extends Controller
 {
         public function index()
     {
-        
-        // 2. Получаем данные о преподавателях
+        $sharedMeta = Inertia::getShared('meta') ?? [];
         $educators = Educator::all();
 
-        // Тут ты можешь получить и другие данные
-        // $courses = Course::latest()->take(6)->get();
-        // $reviews = Review::where('is_featured', true)->get();
-
-        // 3. Рендерим компонент главной страницы ('Index')
-        // и передаем все необходимые данные в пропсы
         return Inertia::render('Index', [
             'educators' => $educators,
             // 'courses' => $courses,
             // 'reviews' => $reviews,
+            'meta' => array_merge($sharedMeta, [
+                'title' => 'Главная',
+                'description' => 'Поможем вашему ребенку найти призвание! Онлайн-курсы по профориентации и развитию soft-skills для детей и подростков. Интерактивные занятия и наставники, которые говорят на одном языке с учениками. Запишитесь на пробный урок!',
+            ]),
         ]);
     }
 
         public function about()
     {
+        $sharedMeta = Inertia::getShared('meta') ?? [];
         $educators = Educator::all();
 
         return Inertia::render('About', [
             'educators' => $educators,
+            'meta' => array_merge($sharedMeta, [
+                'title' => 'О нас',
+                'description' => 'Узнайте о миссии проекта "Не Бойся Знать". Мы создаем образовательную среду без стресса и зубрежки, помогая детям раскрыть таланты и сделать осознанный выбор профессии. Знакомьтесь с нашей командой!',
+            ]),
         ]);
     }
 
         public function reviews()
     {
+        $sharedMeta = Inertia::getShared('meta') ?? [];
         $reviews = Review::all();
         // тут при загрузке курсов юзера сделать фильтрацию на те, у которых нет отзыва
 
@@ -46,6 +49,10 @@ class HomeController extends Controller
             'reviews' => $reviews,
             'show_header' => false,
             'accept_reviews' => config('app.accept_reviews'),
+            'meta' => array_merge($sharedMeta, [
+                'title' => 'Отзывы',
+                'description' => '"Сын наконец-то понял, кем хочет стать!" - читайте этот и другие отзывы о наших развивающих курсах. Мнения родителей и детей, которые уже выбрали нас и довольны результатом.',
+            ]),
         ]);
     }
 
@@ -72,7 +79,13 @@ class HomeController extends Controller
 
         public function policy()
     {
-        return Inertia::render('Policy');
+        $sharedMeta = Inertia::getShared('meta') ?? [];
+        return Inertia::render('Policy', [
+            'meta' => array_merge($sharedMeta, [
+                'title' => 'Политика',
+                'description' => 'Официальная политика конфиденциальности сайта НеБойсяЗнать. Мы подробно разъясняем, как собираем, храним и обрабатываем персональные данные наших пользователей. Ваша безопасность — наш приоритет.',
+            ]),
+        ]);
     }
     //
 }

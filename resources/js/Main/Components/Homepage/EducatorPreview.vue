@@ -53,7 +53,7 @@
         font-weight: 700;
         font-size: clamp(30px, 2vw, 40px);
         letter-spacing: -0.02em;
-        color: #F8F6F0;
+        color: $dark-text;
         text-align: center;
         padding: 40px 5px 5px 5px;
     }
@@ -64,7 +64,7 @@
         font-size: clamp(16px, 1vw, 20px);
         letter-spacing: -0.02em;
         text-align: center;
-        color: #F8F6F0;
+        color: $dark-text;
         min-height: 108px;
         height: fit-content;
         padding: 0 30px;

@@ -1,6 +1,5 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
-import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/Blog/Layouts/AppLayout.vue';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css'; // импортируем стили для Tippy
@@ -185,17 +184,6 @@ const share = (socialNetwork) => {
 </script>
 
 <template>
-  <Head :title="article.title">
-        <meta name="description" :content="article.description" />
-        <meta property="og:title" :content="article.title" />
-        <meta property="og:description" :content="article.description" />
-        <meta property="og:image" :content="imagePath" />
-        <meta property="og:url" :content="currentUrl" />
-        <meta property="og:type" content="article" />
-        <meta property="og:site_name" content="НеБойсяЗнать - образовательная платформа" />
-        <meta property="og:locale" content="ru_RU" />
-  </Head>
-
   <AppLayout>
     <div class="share-window" id="share-window" ref="shareWindowTemplate" style="display: none;">
         <div class="d-flex">
@@ -217,7 +205,7 @@ const share = (socialNetwork) => {
                     <div class="modal-body">
                         <a href="/main" class="btn btn-light">Приобрести наши курсы</a>
                         <div class="share-links-wrap">
-                            <h5>Поделиться</h5>
+                            <h5 class="share-links-wrap-title">Поделиться</h5>
                             <div class="row mx-0">
                                 <div class="col">
                                     <a href="#" @click="share('vk')">
@@ -250,13 +238,13 @@ const share = (socialNetwork) => {
         <section class="article-wrap col-12">
             <div class="article-body">
                 <div class="article-header d-inline-flex px-0">
-                    <p class="article-type">{{ articleType }}</p>
-                    <p class="article-date ps-2">{{ formattedDate }}</p>
+                    <p class="article-type article-header-content">{{ articleType }}</p>
+                    <p class="article-date article-header-content ps-2">{{ formattedDate }}</p>
                 </div>
-                <h1 id="title" ref="titleElement">{{ article.title }}<i class="fa-xs fa-solid fa-share share-icon"></i></h1>
+                <h1 class="article-title" id="title" ref="titleElement">{{ article.title }}<i class="fa-xs fa-solid fa-share share-icon"></i></h1>
                 <div v-html="article.content" class="article-content" ref="articleContent"></div>
                 <div class="article-footer">
-                    <hr>
+                    <hr class="article-footer-divider">
                     <div class="row article-creator">
                         <div class="col d-inline-flex creator-info">
                             <div :style="{ backgroundImage: creatorPicture }" class="creator-icon"></div>
@@ -275,25 +263,10 @@ const share = (socialNetwork) => {
 
 <style lang="scss" scoped>
 
-$bg-creme:      #F7F1E3; // rgb(247, 241, 227)
-$text-main:     #3D352E; // Темный сепия
-$text-headings: #2B2521; // Насыщенный эспрессо
-$text-meta:     #8C7D6B; // Приглушенный сепия для мета-информации (даты, категории)
-$accent-action: #E55B3C; // Терракотовый
-$accent-trust:  #005A7A; // Глубокий сине-зеленый
-
-// Дополнительная темная тема (для модальных окон и футера)
-$dark-bg:       #23252c;
-$dark-bg-light: #353535;
-$dark-text:     #E8E8E8;
-$dark-text-meta:#b8b8b8;
-
-/* --- ОБЩИЕ СТИЛИ --- */
-
 .body-wrap {
     width: 100%;
     min-height: 900px;
-    background-color: transparent; // Можно оставить, если фон на body, или задать $bg-creme
+    background-color: $bg-main;
     display: flex;
     justify-content: center;
 }
@@ -311,7 +284,6 @@ $dark-text-meta:#b8b8b8;
     }
 }
 
-/* --- СТАТЬЯ (СВЕТЛАЯ ТЕМА) --- */
 .article-wrap {
     border-radius: 20px;
     min-height: 700px;
@@ -325,7 +297,7 @@ $dark-text-meta:#b8b8b8;
     }
     
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;   
-    background: $bg-creme; // Используем нашу переменную
+    background: $bg-creme;
 }
 
 .article-body {
@@ -337,33 +309,33 @@ $dark-text-meta:#b8b8b8;
     text-wrap: wrap;
 }
 
-h1 {
+.article-title {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: clamp(28px, 3vw, 32px);
     letter-spacing: -0.02em;
-    color: $text-headings; // ИСПРАВЛЕНО: темный цвет для заголовков
+    color: $text-headings;
     cursor: pointer;
 
     .share-icon {
-        color: $accent-trust; // Акцентный цвет для иконки
+        color: $accent-trust;
         margin-left: 10px;
         transition: 0.3s;
     }
 
     &:hover {
         .share-icon {
-            color: $accent-action; // Меняем на другой акцент при наведении
+            color: $accent-action;
         }
     }
 }
 
-.article-header p {
+.article-header-content {
     font-family: 'Inter', sans-serif;
-    font-weight: 400; // Сделал чуть жирнее для читаемости
+    font-weight: 400;
     font-size: 14px;
     letter-spacing: -0.02em;
-    color: $text-meta; // ИСПРАВЛЕНО: приглушенный цвет для мета-данных
+    color: $text-meta;
     margin-bottom: 5px;
 }
 
@@ -377,6 +349,13 @@ h1 {
         color: $text-main; // ИСПРАВЛЕНО: основной цвет текста
         padding: 10px 0;
         margin: 0;
+        text-indent: 25px;
+    }
+
+    &:deep(h1 + p),
+    &:deep(h2 + p),
+    &:deep(h3 + p) {
+        text-indent: 0; // Убираем отступ у первого абзаца после любого заголовка
     }
 
     &:deep(h2), &:deep(h3) {
@@ -384,20 +363,81 @@ h1 {
         font-weight: 700;
         letter-spacing: -0.02em;
         color: $text-headings; // ИСПРАВЛЕНО: цвет подзаголовков
-        padding: 30px 0 20px 0;
+        padding: 30px 0 10px 0;
     }
-    &:deep(h2) { font-size: 22px; }
+    &:deep(h2) { font-size: 24px; }
     &:deep(h3) { font-size: 20px; }
 
     &:deep(img) {
         width: 100%;
         padding: 10px 0;
-        border-radius: 8px; // Небольшое скругление для мягкости
+        border-radius: 8px;
+    }
+
+    &:deep(blockquote) {
+        border-left: 4px solid #f0a500; // Яркая, но не кричащая вертикальная линия
+        margin: 20px 0;
+        padding: 15px 25px;
+        background-color: #fdfaf2; // Чуть более теплый оттенок, чем основной фон
+        border-radius: 0 8px 8px 0; // Скругление углов для мягкости
+        
+        p {
+            font-family: 'Georgia', serif; // Элегантный шрифт с засечками
+            font-style: italic;
+            font-size: 19px; // Немного крупнее основного текста
+            color: #5a5a5a; // Чуть приглушенный цвет для акцента
+            line-height: 1.7;
+
+            // Убираем лишние отступы у параграфов внутри цитаты
+            &:first-child {
+                margin-top: 0;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    };
+
+    &:deep(ul), &:deep(ol) {
+        padding-left: 30px;
+        margin: 15px 0;
+        font-family: 'Times New Roman', serif;
+        font-size: 18px;
+        color: $text-main;
+    }
+
+    &:deep(li) {
+        line-height: 1.7;
+        padding-left: 10px;
+        margin-bottom: 10px;
+
+        &::marker {
+            color: #f0a500;
+            font-weight: 600;
+        }
+    }
+
+    &:deep(a) {
+        color: #007bff;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        transition: border-bottom 0.3s ease;
+
+        &:hover {
+            border-bottom: 2px solid #007bff;
+        }
+    }
+
+    &:deep(hr) {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
+        margin: 40px 0;
     }
 }
 
 .article-footer {
-    hr {
+    .article-footer-divider {
         border: none;
         height: 1px;
         background-color: $text-meta; // ИСПРАВЛЕНО: линия в тон мета-текста
@@ -448,12 +488,12 @@ h1 {
     padding: 20px;
 
     .modal-body {
-        h5 {
+        .modal-title {
             font-family: 'Inter', sans-serif;
             color: $dark-text;
         }
 
-        a.btn-light {
+        .btn-light {
             background: $dark-text; // Светлый фон
             color: $dark-bg; // Темный текст на кнопке
             font-weight: 700;
@@ -478,7 +518,7 @@ h1 {
         .share-links-wrap {
             padding: 30px 0 0 0;
 
-            h5 {
+            .share-links-wrap-title {
                 font-family: 'Inter', sans-serif;
                 font-weight: 400;
                 font-size: 16px;
@@ -505,7 +545,7 @@ h1 {
         border: 0;
         padding: 0 16px 0 16px;
 
-        h5 {
+        .modal-title {
             color: white;
             font-size: 16px;
             letter-spacing: -0.02em;
@@ -531,7 +571,7 @@ h1 {
                 }
             }
 
-            i {
+            .fa-solid {
                 color: white;
                 transition: 0.2s;
             }

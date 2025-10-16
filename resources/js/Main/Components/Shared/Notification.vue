@@ -86,7 +86,7 @@ const notificationClassType = computed(() => {
         padding: 1rem 1.5rem;
         border-radius: 12px;
         font-size: 1rem;
-        color: #343A40;
+        color: $text-light;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         border: 2px solid transparent;
         max-width: 350px;
@@ -101,13 +101,13 @@ const notificationClassType = computed(() => {
     .notification.is-success {
         background-color: #FF9F43;
         border-color: #e68a2e;
-        color: #ffffff;
+        color: $dark-text;
     }
 
     .notification.is-danger {
         background-color: #E76F51;
         border-color: #d15a3a;
-        color: #ffffff;
+        color: $dark-text;
     }
 
     .close-button {

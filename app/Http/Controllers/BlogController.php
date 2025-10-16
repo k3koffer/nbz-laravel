@@ -8,45 +8,53 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use App\Models\Educator;
+use function PHPUnit\Framework\isArray;
 
 class BlogController extends Controller
 {
-    protected $allowedIps = [
-        '127.0.0.1',
-        '192.250.230.83',
-        '83.215.234.49',
-        '31.135.33.119'
-    ];
-
         public function index(Request $request, GetPostsAction $getPostsAction)
     {
         $posts = $getPostsAction->execute($request);
+        $sharedMeta = Inertia::getShared('meta') ?? [];
 
         return Inertia::render('Index', [
             'posts' => $posts,
             'filters' => $request->only(['search', 'tags']),
-            'query' => $request->query()
+            'query' => $request->query(),
+            'meta' => array_merge($sharedMeta, [
+                'title' => 'Блог',
+                'description' => 'Блог для тех, кто не перестал задавать вопросы. Разбираем самые неожиданные темы о мире, человеке и технологиях простыми и живыми словами. Читайте, чтобы смотреть на привычные вещи под совершенно новым углом.',
+            ]),
         ]);
     }
 
         public function admin(Request $request, GetPostsAction $getPostsAction)
     {
-        $userIp = $request->ip();
-        if (!in_array($userIp, $this->allowedIps)) {
-            abort(403, 'У вас нет доступа к этому разделу.');
-        }
-
         $posts = $getPostsAction->execute($request);
         $educators = Educator::all();
+
+        $sharedMeta = Inertia::getShared('meta') ?? [];
         return Inertia::render('Admin', [
             'posts' => $posts,
             'educators' => $educators,
+            'meta' => array_merge($sharedMeta, [
+                'title' => 'Панель администратора (блог)',
+                'description' => 'Панель администратора (блог)',
+            ]),
         ]);
     }
 
         public function show(Post $post)
     {
         $post->load('creator');
+        $sharedMeta = Inertia::getShared('meta') ?? [];
+
+        $pictureAssoc = json_decode($post->picture, true);
+        if (isset($pictureAssoc['path'])) {
+            $pictureName = $pictureAssoc['path'];
+        } else {
+            $pictureName = 'notfound';
+        }
         
         return Inertia::render('Article', [
             'article' => [
@@ -62,7 +70,13 @@ class BlogController extends Controller
                 'tags' => $post->tags,
                 'content' => Str::markdown($post->content),
                 'created_at' => $post->created_at,
-            ]
+            ],
+            'meta' => array_merge($sharedMeta, [
+                'title' => $post->title,
+                'description' => $post->description,
+                'image' => $pictureName,
+                'type' => 'article'
+            ]),
         ]);
     }
     //

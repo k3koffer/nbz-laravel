@@ -9,7 +9,7 @@ import { Link } from '@inertiajs/vue3';
                 <Link href="/">
                     <img 
                         class="logo-img" 
-                        src="https://ik.imagekit.io/3dwnck0ax/new_logo_transparent.png?updatedAt=1757353835347" 
+                        src="https://ik.imagekit.io/3dwnck0ax/new_logo_transparent.webp?updatedAt=1760216006474" 
                         alt="Логотип Не бойся знать"
                     >
                 </Link>
@@ -46,7 +46,7 @@ import { Link } from '@inertiajs/vue3';
     footer {
         width: 100%;
         min-height: 270px;
-        background-color: #F8F6F0;
+        background-color: $bg-white;
         position: relative;
         height: fit-content;
         display: flex;
@@ -74,7 +74,7 @@ import { Link } from '@inertiajs/vue3';
 
             i {
                 transition: 0.2s;
-                color: black;
+                color: $text-light;
                 &:hover {
                     transform: scale(1.2);
                 }
@@ -101,11 +101,11 @@ import { Link } from '@inertiajs/vue3';
                 transition: 0.2s ease-out;
                 width: fit-content;
                 text-decoration: none;
-                color: black;
+                color: $text-light;
 
                 &:hover {
                     letter-spacing: 1.2px;
-                    color: #ada587;
+                    color: $dark-text-hover;
                 }
             }
 
@@ -138,11 +138,11 @@ import { Link } from '@inertiajs/vue3';
                 padding: 0 10px;
                 transition: 0.2s ease-out;
                 text-decoration: none;
-                color: black;
+                color: $text-light;
 
                 &:hover {
                     letter-spacing: 1px;
-                    color: #ada587;
+                    color: $dark-text-hover;
                 }
             }
         }
@@ -155,12 +155,12 @@ import { Link } from '@inertiajs/vue3';
 
             a {
                 text-decoration: none;
-                color: black;
+                color: $text-light;
             }
 
             &:hover {
                 letter-spacing: 1px;
-                color: #ada587;
+                color: $dark-text-hover;
             }
         }
     }

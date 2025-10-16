@@ -83,7 +83,7 @@ let showResetButton = computed(() => {
             <div class="search-popup-container" v-if="isSearchVisible">
                 <form class="search-popup-content row" @submit.prevent="performSearch">
                     <div class="input-wrapper col-12">
-                        <input v-model="searchQuery" :class="{'py-2': haveInput}" type="text" class="form-control" placeholder="Поиск..." spellcheck="false">
+                        <input v-model="searchQuery" :class="{'py-2': haveInput}" type="text" class="form-control search-input" placeholder="Поиск..." spellcheck="false">
                         <transition name="fade" mode="out-in">    
                             <button v-show="haveInput" @click.prevent="clearInput" class="clear-input">
                                 <i class="fa-solid fa-xmark"></i>
@@ -135,9 +135,9 @@ let showResetButton = computed(() => {
             border: 0;
             background-color: transparent;
 
-            i {
+            .fa-solid {
                 transition: 0.2s ease-out;
-                color: #D3C8B3;
+                color: $bg-creme;
             }
 
             &:hover {
@@ -157,16 +157,16 @@ let showResetButton = computed(() => {
                 transform: translateY(-50%);
                 right: 50px;
                 padding: 0 5px;
-                color: #D3C8B3;
+                color: $bg-creme;
                 background-color: transparent;
                 border: 0;
             }
 
-            input {
+            .search-input {
                 background-color: transparent;
                 border: 0;
                 border-bottom: solid 2px;
-                border-color: #D3C8B3;
+                border-color: $bg-creme;
                 font-family: 'Nunito', sans-serif;
                 font-family: 18px;
                 padding: 5px;
@@ -195,7 +195,7 @@ let showResetButton = computed(() => {
             width: fit-content;
             padding: 10px 20px;
             transition: 0.2s ease-in;
-            color: #23252C;
+            color: $text-main;
 
             &:hover {
                 transform: scale(1.05);
@@ -207,7 +207,7 @@ let showResetButton = computed(() => {
                 background: transparent;
                 border: 0;
                 border-bottom: solid 2px;
-                border-color: #D3C8B3;
+                border-color: $bg-creme;
                 border-radius: 0;
             }
 
@@ -220,7 +220,7 @@ let showResetButton = computed(() => {
             }
 
             &:deep(.multiselect__content-wrapper) {
-                background: #F8F6F0;
+                background: $bg-creme;
             }
 
             &:deep(.multiselect__option--highlight) {
@@ -228,7 +228,7 @@ let showResetButton = computed(() => {
             }
 
             &:deep(.multiselect__option--selected) {
-                background: #F8F6F0;
+                background: $bg-creme;
                 color: #35495e;
                 font-weight: bold;
             }
@@ -243,7 +243,7 @@ let showResetButton = computed(() => {
             }
 
             &:deep(.multiselect__option--selected::after) {
-                color: #35495e;
+                color: $accent-trust;
             }
 
             &:deep(.multiselect__option--highlight::after) {
@@ -251,18 +251,18 @@ let showResetButton = computed(() => {
             }
 
             &:deep(.multiselect__tag) {
-                background-color: #FBEEC1;
-                color: #23252C;
+                background-color: $bg-main;
+                color: $text-light;
             }
 
             &:deep(.multiselect__tag-icon) {
                 &::after {
-                    color: #23252C;
+                    color: $text-light;
                 }
 
                 &:hover{
                     &::after {
-                        color: rgb(158, 158, 158);
+                        color: $dark-text-meta;
                     }
                 }
             }

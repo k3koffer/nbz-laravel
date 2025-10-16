@@ -28,7 +28,7 @@ const props = defineProps({
     figure {
         padding: 20px 10px 10px 10px;
         background-color: transparent;
-        border: 1px solid #D3C8B3;
+        border: 1px solid $dark-text-hover;
         border-top: 0;
         border-right: 0;
         border-left: 0;
@@ -54,7 +54,7 @@ const props = defineProps({
     
         .rating-star {
             display: inline;
-            color: #ccc;
+            color: $dark-text-meta;
             display: inline-block;
         }
     
@@ -74,6 +74,6 @@ const props = defineProps({
         font-family: 'Nunito', sans-serif;
         font-weight: 400;
         font-size: 14px;
-        color: #636363;
+        color: $dark-text-meta;
     }
 </style>

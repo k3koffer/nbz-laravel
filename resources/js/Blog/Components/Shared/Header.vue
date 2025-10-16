@@ -36,15 +36,15 @@ function applySort(sortType) {
 </script>
 
 <template>
-    <header style="transition: 0.2s; transition-timing-function: ease-in;" class="row mx-0 top-0">
+    <header style="transition: 0.2s; transition-timing-function: ease-in;" class="row mx-0 top-0 header">
         <div class="col-12 col-xl-6 col-xxl-6 d-flex justify-content-start px-0 py-0">
             <Link class="d-flex text-decoration-none mx-auto mx-xl-5" href="/">
-                <div class="logo"><img alt="Логотип НеБойсяЗнать | Блог" src="https://ik.imagekit.io/3dwnck0ax/logo_blog_transparent.png?updatedAt=1758560102058"></div>
+                <div class="logo-wrapper"><img class="logo" alt="Логотип НеБойсяЗнать | Блог" src="https://ik.imagekit.io/3dwnck0ax/logo_blog_transparent.webp?updatedAt=1760216006559"></div>
             </Link>
         </div>
         <nav class="func col-12 col-xl-6 col-xxl-6 d-flex">
             <div class="home d-flex align-items-center px-2 py-1">
-                    <a href="/main">
+                    <a class="home-link" href="/main">
                         <i class="fa-solid fa-house nav-icon"></i>
                     </a>
                 </div>
@@ -52,10 +52,10 @@ function applySort(sortType) {
                 <i class="fa-solid fa-magnifying-glass nav-icon"></i>
             </div>
             <div class="sort">
-                <button class="d-inline-flex">
-                    <span @click="applySort('new')" class="px-2 new" :class="{ 'active': currentSort === 'new' }">НОВЫЕ </span> 
+                <button class="d-inline-flex sort-button">
+                    <span @click="applySort('new')" class="px-2 new sort-span" :class="{ 'active': currentSort === 'new' }">НОВЫЕ </span> 
                     / 
-                    <span @click="applySort('best')" class="px-2 best" :class="{ 'active': currentSort === 'best' }"> ЛУЧШИЕ</span>
+                    <span @click="applySort('best')" class="px-2 best sort-span" :class="{ 'active': currentSort === 'best' }"> ЛУЧШИЕ</span>
                 </button>
             </div>
         </nav>
@@ -63,11 +63,11 @@ function applySort(sortType) {
 </template>
 
 <style lang="scss" scoped>
-    header {
+    .header {
         width: 100%;
         min-height: 80px;
         height: fit-content;
-        background: #F8F6F0;
+        background: $bg-creme;
         z-index: 100;
         position: relative;
 
@@ -76,11 +76,11 @@ function applySort(sortType) {
         }
     }
 
-    .logo {
+    .logo-wrapper {
         padding: 10px;
         text-align: center;
 
-        img {
+        .logo {
             padding: 5px;
             margin: auto;
             max-height: 60px;
@@ -104,7 +104,7 @@ function applySort(sortType) {
     }
 
     .search {
-        color: black;
+        color: $text-light;
         cursor: pointer;
         transition: 0.2s ease-out;
         
@@ -114,7 +114,7 @@ function applySort(sortType) {
     }
 
     .home {
-        color: black;
+        color: $text-light;
         cursor: pointer;
         transition: 0.2s ease-out;
         
@@ -122,13 +122,13 @@ function applySort(sortType) {
             color: #ada587;
         }
 
-        a {
-            color: black;
+        .home-link {
+            color: $text-light;
             text-decoration: none;
             transition: 0.2s ease-out;
             
             &:hover {
-                color: #ada587;
+                color: $dark-text-hover;
             }
         }
     }
@@ -138,10 +138,10 @@ function applySort(sortType) {
         align-items: center;
         padding: 10px 0;
 
-        button {
+        .sort-button {
             background: transparent;
             border: 0;
-            color: black;
+            color: $text-light;
             font-size: 16px;
             @include media-breakpoint-up(md) {
                 font-size: 19px;
@@ -150,18 +150,18 @@ function applySort(sortType) {
             font-weight: 600;
             padding: 5px;
 
-            span {
+            .sort-span {
                 transition: 0.2s ease-out;
 
                 &:hover {
-                    color: #ada587;
+                    color: $dark-text-hover;
                 }
             }
         }
 
         .active {
             transition: 0s;
-            color: #ada587;
+            color: $dark-text-hover;
         }
     }
 </style>

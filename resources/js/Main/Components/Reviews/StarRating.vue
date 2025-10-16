@@ -37,7 +37,7 @@ const rate = (star) => {
         .rating-star {
             display: inline;
             cursor: pointer;
-            color: #ccc; /* Начальный цвет для неактивных звезд */
+            color: $dark-text-meta; /* Начальный цвет для неактивных звезд */
             transition: transform 0.2s ease-in-out, color 0.2s ease-in-out; /* Плавные переходы для цвета и размера */
             display: inline-block;
         }
@@ -56,6 +56,6 @@ const rate = (star) => {
     }
 
     .rating-wrapper .rating-star:hover ~ .rating-star {
-        color: #ccc; /* Или любой другой цвет по умолчанию */
+        color: $dark-text-meta; /* Или любой другой цвет по умолчанию */
     }
 </style>

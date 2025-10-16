@@ -112,7 +112,7 @@ const submit = () => {
         font-family: 'Inter';
         font-weight: 400;
         font-size: 18px;
-        color: #23252C;
+        color: $text-light;
     }
 
     .send-form-button-wrap{
@@ -129,7 +129,7 @@ const submit = () => {
             font-style: normal;
             font-size: clamp(14px, 2vw, 18px);
             color: white;
-            background-color: #ADA587;
+            background-color: $dark-text-hover;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border: none;
             border-radius: 5px;
@@ -137,7 +137,7 @@ const submit = () => {
             transition: background-color 0.3s ease;
             
             &:hover {
-                background-color: #8c8770;
+                background-color: $dark-text-hover;
             }
         }
     }
@@ -150,8 +150,8 @@ const submit = () => {
         .form-select,
         .input-group-text {
             background-color: transparent;
-            color: #333;
-            border-color: #D3C8B3;
+            color: $text-headings;
+            border-color: $text-meta;
             border-radius: 0.375rem;
         }
 
@@ -159,14 +159,14 @@ const submit = () => {
             border-right: none;
         }
         .form-select {
-            border-left: 1px solid #D3C8B3;
+            border-left: 1px solid $text-meta;
         }
 
         .form-select:focus {
             box-shadow: 0 0 0 0.25rem rgba(130, 115, 87, 0.25);
-            border-color: #A89B85;
+            border-color: $dark-text-hover;
             background-color: transparent;
-            color: #333;
+            color: $text-headings;
         }
 
         .form-select {
@@ -176,14 +176,14 @@ const submit = () => {
 
     .review-textarea {
         background-color: transparent;
-        border-color: #D3C8B3;
+        border-color: $text-meta;
         border-radius: 0.375rem;
 
         &:focus {
         box-shadow: 0 0 0 0.25rem rgba(130, 115, 87, 0.25);
-        border-color: #A89B85;
+        border-color: $dark-text-hover;
         background-color: transparent;
-        color: #333;
+        color: $text-light;
         }
     }
 

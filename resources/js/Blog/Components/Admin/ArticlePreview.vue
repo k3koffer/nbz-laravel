@@ -72,7 +72,7 @@ let deletePost = function () {
 
 <style lang="scss" scoped>
     .article {
-        background-color: #353535;
+        background-color: $dark-bg-light;
         border-radius: 10px;
         margin: 10px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -82,7 +82,7 @@ let deletePost = function () {
     .show-actions-button {
         background-color: transparent;
         border: 0;
-        color: #F7F1E3;
+        color: $bg-creme;
         width: fit-content;
 
         .show-actions-icon {
@@ -104,12 +104,12 @@ let deletePost = function () {
         font-family: 'Inter', sans-serif;
         font-weight: 500;
         font-size: 14px;
-        color: #F7F1E3;
+        color: $bg-creme;
     }
     
     .time {
         font-size: 12px;
-        color: #bbb6ac;
+        color: $dark-text-meta;
     }
 
     .actions {
@@ -120,14 +120,14 @@ let deletePost = function () {
     .action-button {
         margin: 10px;
         border: 0;
-        background-color: #8C7D6B;
+        background-color: $text-meta;
         padding: 5px 10px;
         border-radius: 10px;
 
         font-family: 'Inter', sans-serif;
         font-weight: 500;
         font-size: 12px;
-        color: #F7F1E3;
+        color: $bg-creme;
     }
 
     .delete-confirm {
@@ -144,6 +144,6 @@ let deletePost = function () {
         font-family: 'Inter', sans-serif;
         font-weight: 500;
         font-size: 12px;
-        color: #F7F1E3;
+        color: $bg-creme;
     }
 </style>

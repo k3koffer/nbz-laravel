@@ -4,10 +4,6 @@ import { Head, Link } from '@inertiajs/vue3';
 import EducatorPreview from '@/Main/Components/Homepage/EducatorPreview.vue';
 import { computed, ref, onMounted, onUnmounted } from 'vue';
 
-// --- PROPS ---
-// defineProps используется для объявления данных (пропсов),
-// которые страница получает от Laravel-контроллера.
-// В данном случае мы ожидаем получить объект 'users' с данными.
 const props = defineProps({
     educators: Array,
 });
@@ -40,28 +36,34 @@ onMounted(() => {
     });
   }, options);
 
-  if (videoElement.value) {
-    observer.observe(videoElement.value);
+  if (aboutVideo.value) {
+    observer.observe(aboutVideo.value);
   }
 });
 
 onUnmounted(() => {
-  if (observer && videoElement.value) {
-    observer.unobserve(videoElement.value);
+  if (observer && aboutVideo.value) {
+    observer.unobserve(aboutVideo.value);
   }
 });
 
 </script>
 
 <template>
-    <Head title="Главная">
-        <meta name="description" content="Наши молодые и энергичные преподаватели говорят с ребятами на одном языке, так что забудьте о зубрежке и непонимании — мы предлагаем интерактивные уроки, интересные задания и живое общение. Не Бойся Знать — это ваш путь к знаниям без страха и скуки!" />
-        <meta property="og:title" content="НеБойсяЗнать - Главная" />
-        <meta property="og:description" content="Наши молодые и энергичные преподаватели говорят с ребятами на одном языке, так что забудьте о зубрежке и непонимании — мы предлагаем интерактивные уроки, интересные задания и живое общение. Не Бойся Знать — это ваш путь к знаниям без страха и скуки!" />
-        <meta property="og:url" :content="currentUrl" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="НеБойсяЗнать - образовательная платформа" />
-        <meta property="og:locale" content="ru_RU" />
+    <Head>
+        <link
+            rel="preload"
+            as="image"
+            fetchpriority="high"
+            imagesrcset="
+                https://ik.imagekit.io/3dwnck0ax/tr:w-480,f-auto/background_tel.webp?updatedAt=1760216006665 480w,
+                https://ik.imagekit.io/3dwnck0ax/tr:w-750,f-auto/background_tel.webp?updatedAt=1760216006665 750w,
+                https://ik.imagekit.io/3dwnck0ax/tr:w-1280,f-auto/background_wide.webp?updatedAt=1760216006669 1280w,
+                https://ik.imagekit.io/3dwnck0ax/tr:w-1920,f-auto/background_wide.webp?updatedAt=1760216006669 1920w,
+                https://ik.imagekit.io/3dwnck0ax/tr:w-2560,f-auto/background_wide.webp?updatedAt=1760216006669 2560w
+            "
+            imagesizes="(max-width: 767px) 100vw, (min-width: 768px) 100vw"
+        >
     </Head>
     
     <AppLayout>
@@ -72,17 +74,17 @@ onUnmounted(() => {
                         <source 
                             media="(min-width: 768px)"
                             srcset="
-                                https://ik.imagekit.io/3dwnck0ax/tr:w-1280,f-auto/background_wide.png 1280w,
-                                https://ik.imagekit.io/3dwnck0ax/tr:w-1920,f-auto/background_wide.png 1920w,
-                                https://ik.imagekit.io/3dwnck0ax/tr:w-2560,f-auto/background_wide.png 2560w
+                                https://ik.imagekit.io/3dwnck0ax/tr:w-1280,f-auto/background_wide.webp?updatedAt=1760216006669 1280w,
+                                https://ik.imagekit.io/3dwnck0ax/tr:w-1920,f-auto/background_wide.webp?updatedAt=1760216006669 1920w,
+                                https://ik.imagekit.io/3dwnck0ax/tr:w-2560,f-auto/background_wide.webp?updatedAt=1760216006669 2560w
                             "
                         >
 
                         <img 
-                            src="https://ik.imagekit.io/3dwnck0ax/tr:w-750,f-auto/background_tel.png?updatedAt=1757355482559"
+                            src="https://ik.imagekit.io/3dwnck0ax/tr:w-750,f-auto/background_tel.webp?updatedAt=1760216006665"
                             srcset="
-                                https://ik.imagekit.io/3dwnck0ax/tr:w-480,f-auto/background_tel.png?updatedAt=1757355482559 480w,
-                                https://ik.imagekit.io/3dwnck0ax/tr:w-750,f-auto/background_tel.png?updatedAt=1757355482559 750w
+                                https://ik.imagekit.io/3dwnck0ax/tr:w-480,f-auto/background_tel.webp?updatedAt=1760216006665 480w,
+                                https://ik.imagekit.io/3dwnck0ax/tr:w-750,f-auto/background_tel.webp?updatedAt=1760216006665 750w
                             "
                             alt="Фоновое изображение с учениками на развивающих курсах"
                             
@@ -99,10 +101,10 @@ onUnmounted(() => {
                         <div class="logo">
                             <img 
                                 srcset="
-                                    https://ik.imagekit.io/3dwnck0ax/tr:w-640,f-auto/new_logo_transparent.png?updatedAt=1757353835347 640w
+                                    https://ik.imagekit.io/3dwnck0ax/tr:w-640,f-auto/new_logo_transparent.webp?updatedAt=1760216006474 640w
                                 "
                                 sizes="(max-width: 768px) 640px, 120px"
-                                src="https://ik.imagekit.io/3dwnck0ax/tr:w-640,f-auto/new_logo_transparent.png?updatedAt=1757353835347"
+                                src="https://ik.imagekit.io/3dwnck0ax/tr:w-640,f-auto/new_logo_transparent.webp?updatedAt=1760216006474"
                                 alt="Логотип Не Бойся Знать"
                                 width="640" height="120"
                             >
@@ -210,7 +212,7 @@ onUnmounted(() => {
     }
 
     .main {
-        background-color: #FBEEC1; // Оставляем как цвет-заглушку, который виден до загрузки фото
+        background-color: $bg-main; // Оставляем как цвет-заглушку, который виден до загрузки фото
         width: 100%;
         min-height: 500px;
         @include media-breakpoint-up(lg) {
@@ -277,7 +279,7 @@ onUnmounted(() => {
             font-style: normal;
             font-size: clamp(24px, 5vw, 48px);
             text-align: center;
-            color: #343A40;
+            color: $text-light;
             overflow-wrap: break-word;
         }
         
@@ -294,8 +296,8 @@ onUnmounted(() => {
                 font-optical-sizing: auto;
                 font-style: normal;
                 font-size: clamp(14px, 2vw, 18px);
-                color: white;
-                background-color: #ADA587;
+                color: $dark-text;
+                background-color: $dark-text-hover;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                 border: none;
                 border-radius: 5px;
@@ -303,7 +305,7 @@ onUnmounted(() => {
                 transition: background-color 0.3s ease;
                 
                 &:hover {
-                    background-color: #8c8770;
+                    background-color: $dark-text-hover;
                 }
             }
         }
@@ -326,7 +328,7 @@ onUnmounted(() => {
                 width: 30px;
                 height: 50px;
                 margin-left: -15px;
-                border: 2px solid #8c8770;
+                border: 2px solid $dark-text-hover;
                 border-radius: 50px;
                 box-sizing: border-box;
             }
@@ -339,7 +341,7 @@ onUnmounted(() => {
                 width: 6px;
                 height: 6px;
                 margin-left: -3px;
-                background-color: #8c8770;
+                background-color: $dark-text-hover;
                 border-radius: 100%;
                 -webkit-animation: sdb10 2s infinite;
                 animation: sdb10 2s infinite;
@@ -349,7 +351,7 @@ onUnmounted(() => {
     }
     
     .about {
-        background-color: rgb(247, 241, 227);
+        background-color: $bg-creme;
         
         .about-wrap {
             width: 100%;
@@ -371,11 +373,11 @@ onUnmounted(() => {
                     font-weight: 800;
                     font-size: clamp(36px, 4vw,64px);
                     letter-spacing: -0.02em;
-                    color: #000;
+                    color: $text-light;
                     user-select: none;
 
                     span {
-                        color: #ada78b;
+                        color: $dark-text-hover;
                     }
                 }
         
@@ -384,7 +386,7 @@ onUnmounted(() => {
                     font-weight: 400;
                     font-size: clamp(18px, 1.7vw, 22px);
                     line-height: 150%;
-                    color: #828282;
+                    color: #888383;
                     user-select: none;
                 }
         
@@ -394,7 +396,7 @@ onUnmounted(() => {
                     font-weight: 500;
                     font-size: clamp(16px, 1.4vw, 20px);
                     line-height: 150%;
-                    color: #000;
+                    color: $text-light;
                     user-select: none;
                 }
                 
@@ -403,7 +405,7 @@ onUnmounted(() => {
                     padding: 0px 16px;
                     width: 251px;
                     height: 60px;
-                    background: #ADA587;
+                    background: $dark-text-hover;
                     border: none;
                     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         
@@ -411,16 +413,16 @@ onUnmounted(() => {
                     font-weight: 700;
                     font-size: 20px;
                     line-height: 150%;
-                    color: #fff;
+                    color: $dark-text;
                     transition: 0.3s;
         
                 }
         
                 button:hover {
                     background-color: white;
-                    color: black;
+                    color: $text-light;
                     transform: scale(1.05);
-                    border: 1px solid #ADA587;
+                    border: 1px solid $dark-text-hover;
                 }
             }
         
@@ -508,7 +510,7 @@ onUnmounted(() => {
         }
 
         .custom-shape-divider-bottom-1757318243 .shape-fill {
-            fill: #FBEEC1;
+            fill: $bg-main;
         }
         
         .educators-main {
@@ -529,7 +531,7 @@ onUnmounted(() => {
                 text-align: center;
                 font-size: 20px;
                 font-weight: 500;
-                color: #F8F6F0;
+                color: $dark-text;
 
                 a {
                     color: #FF9F43;
@@ -542,7 +544,7 @@ onUnmounted(() => {
                 font-weight: 800;
                 font-size: clamp(36px, 4vw,64px);
                 letter-spacing: -0.02em;
-                color: #F8F6F0;
+                color: $dark-text;
                 width: 100%;
                 text-align: center;
             }
@@ -554,7 +556,7 @@ onUnmounted(() => {
         display: flex;
         justify-content: center;
         position: relative;
-        background-color: #FBEEC1;
+        background-color: $bg-main;
         
         .courses-wrap {
             width: 90%;
@@ -567,7 +569,7 @@ onUnmounted(() => {
                 font-weight: 800;
                 font-size: clamp(36px, 4vw,64px);
                 letter-spacing: -0.02em;
-                color: #23252C;
+                color: $text-light;
                 text-align: center;
                 margin: 130px 0;
                 height: fit-content;
@@ -597,7 +599,7 @@ onUnmounted(() => {
             .courses-list {
                 p {
                     font-family: 'Inter', sans-serif;
-                    color: #23252C;
+                    color: $text-light;
                     text-align: center;
                     font-size: 20px;
                     font-weight: 500;
@@ -621,7 +623,7 @@ onUnmounted(() => {
                     font-weight: 700;
                     font-size: 28px;
                     letter-spacing: -0.02em;
-                    color: #fff;
+                    color: $dark-text;
                     text-align: center;
                     // width: 100%;
                     padding: 0 20px;
@@ -634,7 +636,7 @@ onUnmounted(() => {
                     font-size: 15px;
                     letter-spacing: -0.02em;
                     text-align: center;
-                    color: #e2e2e2;
+                    color: $dark-text;
                     text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
                     max-width: 350px;
                     margin: 0 auto;
@@ -644,7 +646,7 @@ onUnmounted(() => {
                 .picture {
                     width: 30px;
                     height: 30px;
-                    background-color: #d9d9d9;
+                    background-color: $bg-creme;
                     border-radius: 100%;
                     background-size: cover;
                     background-repeat: no-repeat;
@@ -663,7 +665,7 @@ onUnmounted(() => {
                     font-size: 15px;
                     letter-spacing: -0.02em;
                     text-align: center;
-                    color: #e2e2e2;
+                    color: $dark-text;
                     text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
                     line-height: 2;
                     padding: 0 10px;
@@ -675,7 +677,7 @@ onUnmounted(() => {
                     font-size: 15px;
                     letter-spacing: -0.02em;
                     text-align: center;
-                    color: #e2e2e2;
+                    color: $dark-text;
                     text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
                     line-height: 2;
                     padding: 0 10px;
@@ -701,7 +703,7 @@ onUnmounted(() => {
                         font-size: 20px;
                         width: fit-content;
                     }
-                    color: #23252C;
+                    color: $text-light;
                     text-align: center;
                 }
                 
@@ -710,19 +712,19 @@ onUnmounted(() => {
                     padding: 0px 16px;
                     width: 249px;
                     height: 55px;
-                    background: #23252c;
+                    background: $text-light;
                     transition: 0.3s;
                     
                     font-family: 'Inter', sans-serif;
                     font-weight: 500;
                     font-size: 16px;
                     line-height: 150%;
-                    color: #fff;
+                    color: $dark-text;
                     
                     &:hover {
                         transform: scale(1.05);
                         background: white;
-                        color: #23252c;
+                        color: $text-light;
                     }
                 }
             }

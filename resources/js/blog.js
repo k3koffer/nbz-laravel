@@ -1,12 +1,5 @@
-import '../css/reset.css';
-
-import '../scss/blog.scss'; // Импортируем наши SCSS стили
+import '../scss/blog.scss';
 import './bootstrap';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import '../css/blog.css';
-
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import { createInertiaApp } from '@inertiajs/vue3';

@@ -1,6 +1,5 @@
 <script setup>
 import AppLayout from '@/Main/Layouts/AppLayout.vue';
-import { Head } from '@inertiajs/vue3';
 
 const props = defineProps({
     educators: Array,
@@ -9,8 +8,6 @@ const props = defineProps({
 </script>
 
 <template>
-    <Head title="О нас" />
-    
     <AppLayout>
         <div class="index-body">
             <section class="section-about">
@@ -111,7 +108,7 @@ const props = defineProps({
         height: fit-content;
         align-items: center;
         display: flex;
-        background-color: #FBEEC1;
+        background-color: $bg-main;
 
         margin: 0 auto;
         padding: 50px 0;
@@ -139,7 +136,7 @@ const props = defineProps({
                 padding: 5px 1em;
                 line-height: 1.6em;
                 border: 1px solid;
-                color: #F8F6F0;
+                color: $bg-creme;
                 background: 
                 conic-gradient(from   45deg at left ,var(--c) 25%,var(--h) 0) 0,
                 conic-gradient(from -135deg at right,var(--c) 25%,var(--h) 0) 100%;
@@ -172,14 +169,14 @@ const props = defineProps({
                 line-height: 150%;
                 letter-spacing: -0.02em;
                 text-align: center;
-                color: #23252C;
+                color: $text-light;
             }
 
             .hr-div {
                 width: 50%;
                 margin: 50px auto 0 auto;
                 height: 6px;
-                background-color: #23252C;
+                background-color: $text-light;
             }
         }
     }
@@ -190,13 +187,13 @@ const props = defineProps({
         height: fit-content;
 
         .person-bg-dark {
-            background-color: #23252C;
-            color: #F8F6F0;
+            background-color: $text-light;
+            color: $bg-creme;
         }
 
         .person-bg-light {
-            background-color: #FBEEC1;
-            color: #23252C;
+            background-color: $bg-main;
+            color: $text-light;
         }
 
         .person {
@@ -218,7 +215,7 @@ const props = defineProps({
                 height: 223px;
                 background-size: cover;
                 background-repeat: no-repeat;
-                background-color: gray;
+                background-color: $bg-creme;
                 border-radius: 100%;
                 margin: 30px 0 0 0;
             }

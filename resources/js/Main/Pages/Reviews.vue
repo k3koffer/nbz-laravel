@@ -2,7 +2,7 @@
 import AppLayout from '@/Main/Layouts/AppLayout.vue';
 import ReviewForm from '@/Main/Components/Reviews/ReviewForm.vue';
 import Review from '@/Main/Components/Reviews/Review.vue';
-import { Head, Link } from '@inertiajs/vue3';
+import { Link } from '@inertiajs/vue3';
 
 const props = defineProps({
     reviews: Array,
@@ -12,8 +12,6 @@ const props = defineProps({
 </script>
 
 <template>
-    <Head title="Отзывы" />
-    
     <AppLayout>
         <div class="index-body">
             <div class="go-back">
@@ -44,7 +42,7 @@ const props = defineProps({
 
 <style lang="scss" scoped>
     .index-body {
-        background-color: #FBEEC1;
+        background-color: $bg-main;
     }
 
     .go-back {
@@ -55,7 +53,7 @@ const props = defineProps({
         a {
         transition: 0.2s ease-out;
         text-decoration: none;
-        color: black;
+        color: $text-light;
 
         &:hover {
             color: #FF9F43;
@@ -88,7 +86,7 @@ const props = defineProps({
                 font-size: 64px;
             }
             text-align: center;
-            color: #23252C;
+            color: $text-light;
         }
 
         p {
@@ -103,7 +101,7 @@ const props = defineProps({
             }
             text-align: center;
             text-wrap: balance;
-            color: #23252C;
+            color: $text-light;
         }
     }
 

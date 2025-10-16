@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::domain(config('app.blog_domain'))->group(function () {
     Route::get('/', [BlogController::class, 'index']);
-    Route::get('/admin', action: [BlogController::class, 'admin']);
+    Route::get('/admin', action: [BlogController::class, 'admin'])->middleware('admin.check');
     Route::get('/posts/{post:link}', [BlogController::class, 'show'])->name('posts.show');
 
     Route::redirect('/main', 'http://' . config('app.main_domain')); 
@@ -25,7 +25,7 @@ Route::domain(config('app.main_domain'))->group(function () {
     Route::redirect('/blog', 'http://' . config('app.blog_domain'));
 });
 
-Route::prefix('admin')->middleware(['web'])->group(function () {
+Route::prefix('admin')->middleware(['admin.check'])->group(function () {
     Route::put('posts/{post}', [AdminPostController::class, 'update'])->name('posts.update');
     Route::resource('posts', AdminPostController::class)->only(['destroy', 'store']);
 });

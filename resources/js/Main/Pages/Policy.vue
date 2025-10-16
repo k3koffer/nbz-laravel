@@ -1,11 +1,8 @@
 <script setup>
 import AppLayout from '@/Main/Layouts/AppLayout.vue';
-import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Head title="Политика конфиденциальности" />
-    
     <AppLayout>
         <div class="index-body">
             <section class="confidencial-policy">
@@ -198,7 +195,7 @@ import { Head } from '@inertiajs/vue3';
 
 <style lang="scss" scoped>
     .index-body {
-        background: #FBEEC1;
+        background: $bg-main;
     }
 
     .confidencial-policy {

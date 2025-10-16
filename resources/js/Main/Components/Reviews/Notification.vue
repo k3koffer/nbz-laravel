@@ -21,6 +21,6 @@ defineProps({
         font-family: 'Nunito', sans-serif;
         font-weight: 300;
         font-size: 14px;
-        color: #232323;
+        color: $text-light;
     }
 </style>

@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <footer>
+    <footer class="footer">
         <div class="footer-top row mx-0">
             <div class="col-12 col-lg-4">
                 <Link href="/"><div class="logo"></div></Link>
@@ -18,27 +18,27 @@ import { Link } from '@inertiajs/vue3';
             </div>
             <div class="col-12 col-lg-8">
                 <div class="info-wrapper">
-                    <p>Информация</p>
-                    <Link href="/about">О нас</Link>
-                    <Link href="/reviews">Отзывы</Link>
+                    <p class="info-title">Информация</p>
+                    <Link class="info-link" href="/about">О нас</Link>
+                    <Link class="info-link" href="/reviews">Отзывы</Link>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="bottom-links">
-                <Link href="/policy">Политика конфиденциальности</Link>
-                <a href="mailto:help@m-nbz.org">help@m-nbz.org</a>
+                <Link class="bottom-link" href="/policy">Политика конфиденциальности</Link>
+                <a class="bottom-link" href="mailto:help@m-nbz.org">help@m-nbz.org</a>
             </div>
-            <div class="nbz-link"><Link href="#">НБЗ - 2025</Link></div>
+            <div class="nbz-link-wrapper"><Link class="nbz-link" href="#">НБЗ - 2025</Link></div>
         </div>
     </footer>
 </template>
 
 <style lang="scss" scoped>
-    footer {
+    .footer {
         width: 100%;
         min-height: 270px;
-        background-color: #F8F6F0;
+        background-color: $bg-creme;
         position: relative;
         height: fit-content;
         display: flex;
@@ -53,7 +53,7 @@ import { Link } from '@inertiajs/vue3';
             margin: 30px 20px 10px 20px;
             padding: 10px;
             height: 60px;
-            background-image: url(https://ik.imagekit.io/3dwnck0ax/new_logo_transparent.png?updatedAt=1757353835347);
+            background-image: url(https://ik.imagekit.io/3dwnck0ax/new_logo_transparent.webp?updatedAt=1760216006474);
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
@@ -67,9 +67,9 @@ import { Link } from '@inertiajs/vue3';
 
             margin: 0 auto;
 
-            i {
+            .fa-brands {
                 transition: 0.2s;
-                color: black;
+                color: $text-light;
                 &:hover {
                     transform: scale(1.2);
                 }
@@ -79,7 +79,7 @@ import { Link } from '@inertiajs/vue3';
         .info-wrapper {
             margin: 30px 20px 10px 20px;
 
-            p {
+            .info-title {
                 font-family: 'Inter', sans-serif;
                 font-weight: 600;
                 font-size: 18px;
@@ -87,7 +87,7 @@ import { Link } from '@inertiajs/vue3';
                 padding: 5px 10px;
             }
 
-            a {
+            .info-link {
                 padding: 3px 10px;
                 font-family: 'Inter', sans-serif;
                 font-weight: 300;
@@ -96,15 +96,15 @@ import { Link } from '@inertiajs/vue3';
                 transition: 0.2s ease-out;
                 width: fit-content;
                 text-decoration: none;
-                color: black;
+                color: $text-light;
 
                 &:hover {
                     letter-spacing: 1.2px;
-                    color: #ada587;
+                    color: $dark-text-hover;
                 }
             }
 
-            a, p {
+            .info-link, .info-title {
                 display: block;
                 text-align: center;
                 @include media-breakpoint-up(lg) {
@@ -122,7 +122,7 @@ import { Link } from '@inertiajs/vue3';
             margin: 0 auto;
             padding: 10px 10px;
 
-            a {
+            .bottom-link {
                 font-family: 'Inter', sans-serif;
                 font-weight: 300;
                 text-align: center;
@@ -133,29 +133,29 @@ import { Link } from '@inertiajs/vue3';
                 padding: 0 10px;
                 transition: 0.2s ease-out;
                 text-decoration: none;
-                color: black;
+                color: $text-light;
 
                 &:hover {
                     letter-spacing: 1px;
-                    color: #ada587;
+                    color: $dark-text-hover;
                 }
             }
         }
 
-        .nbz-link {
+        .nbz-link-wrapper {
             width: fit-content;
             margin: 0 auto;
             padding: 10px 10px;
             transition: 0.2s ease-out;
 
-            a {
+            .nbz-link {
                 text-decoration: none;
-                color: black;
+                color: $text-light;
             }
 
             &:hover {
                 letter-spacing: 1px;
-                color: #ada587;
+                color: $dark-text-hover;
             }
         }
     }

@@ -45,7 +45,7 @@ let articlePicture = computed(() => {
     if (picture && picture.path) {
         return 'url(https://ik.imagekit.io/3dwnck0ax' + picture.path +')';
     } else {
-        return 'unset';
+        return 'url(https://ik.imagekit.io/3dwnck0ax/notfound';
     }
 });
 
@@ -60,12 +60,12 @@ let articleLink = computed(() => {
             <div :style="{ backgroundImage: articlePicture }" class="article" :class="articleSize">
                 <div v-if="!attributeShow" class="px-2 article-attribute">
                         <p class="article-type">{{ articleType }}</p>
-                        <h3><strong>{{ props.article.title }}</strong> {{ props.article.description }}</h3>
+                        <h3 class="article-title"><strong>{{ props.article.title }}</strong> {{ props.article.description }}</h3>
                 </div>
             </div>
             <div v-if="attributeShow" class="px-2 article-attribute">
                 <p class="article-type">{{ articleType }}</p>
-                <h3><strong>{{ props.article.title }}.</strong> {{ props.article.description }}</h3>
+                <h3 class="article-title"><strong>{{ props.article.title }}.</strong> {{ props.article.description }}</h3>
             </div>
         </div>
     </Link>
@@ -100,16 +100,16 @@ let articleLink = computed(() => {
             transition: 0.3s;
             .article-type {
                 font-size: 13px;
-                color: rgb(172, 172, 172);
+                color: $dark-text-meta;
                 margin: 10px 0;
                 letter-spacing: 1px;
                 font-family: 'Montserrat', sans-serif;
                 font-weight: 500;
             }
 
-            h3 {
+            .article-title {
                 font-size: 18px;
-                color: #23252C;
+                color: $text-light;
                 margin: 10px 0;
                 font-family: 'Montserrat', sans-serif;
                 font-weight: 400;
@@ -118,7 +118,7 @@ let articleLink = computed(() => {
 
             .article-description {
                 font-size: 15px;
-                color: #23252C;
+                color: $text-light;
                 margin: 10px 0;
                 font-family: 'Montserrat', sans-serif;
                 font-weight: 400;
@@ -156,7 +156,7 @@ let articleLink = computed(() => {
                 padding: 0 10px;
             }
 
-            h3 {
+            .article-title {
                 font-size: clamp(16px, 2vw, 20px);
                 color: white;
                 margin: 10px 0;
@@ -205,7 +205,7 @@ let articleLink = computed(() => {
                 padding: 0 10px;
             }
 
-            h3 {
+            .article-title {
                 font-size: clamp(16px, 2vw, 20px);
                 color: white;
                 margin: 10px 0;
@@ -269,29 +269,14 @@ let articleLink = computed(() => {
             border-radius: 8px;
         }
 
-        h3 {
+        .article-title {
             font-family: 'Inter', sans-serif;
             font-weight: 700;
             font-size: 28px;
             letter-spacing: -0.02em;
             color: #fff;
             text-align: center;
-            // width: 100%;
             padding: 0 20px;
-        }
-
-        h5 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            font-style: italic;
-            font-size: 15px;
-            letter-spacing: -0.02em;
-            text-align: center;
-            color: #e2e2e2;
-            text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-            max-width: 350px;
-            margin: 0 auto;
-            width: 100%;
         }
 
         .picture {
@@ -316,7 +301,7 @@ let articleLink = computed(() => {
             font-size: 15px;
             letter-spacing: -0.02em;
             text-align: center;
-            color: #e2e2e2;
+            color: $dark-text;
             text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
             line-height: 2;
             padding: 0 10px;
@@ -328,7 +313,7 @@ let articleLink = computed(() => {
             font-size: 15px;
             letter-spacing: -0.02em;
             text-align: center;
-            color: #e2e2e2;
+            color: $dark-text;
             text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
             line-height: 2;
             padding: 0 10px;

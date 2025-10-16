@@ -25,6 +25,7 @@ export default defineConfig({
         alias: {
             '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
             '@': path.resolve(__dirname, 'resources/js'),
+            '~scss': path.resolve(__dirname, 'resources/scss'),
             'vue': path.resolve(__dirname, 'node_modules/vue/dist/vue.esm-bundler.js'),
         },
         dedupe: ['vue'],
@@ -36,6 +37,7 @@ export default defineConfig({
                     @import "~bootstrap/scss/functions";
                     @import "~bootstrap/scss/variables";
                     @import "~bootstrap/scss/mixins";
+                    @import "~scss/_variables.scss";
                 `,
                 silenceDeprecations: [
                     'import', 
